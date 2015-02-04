@@ -75,4 +75,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #Devise Requirement
+  config.action_mailer.default_url_options = { host: 'https://arcane-harbor-7772.herokuapp.com/' }
 end
