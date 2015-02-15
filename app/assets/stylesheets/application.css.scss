@@ -20,15 +20,40 @@
 
 
 body {
-	//background-image: image_url('photo.JPG');
+	
 	background-size: 100%;
 	text-decoration: none;
 	color: black;
+	
+	
 }
 
 h1, h2, p {
 	white-space: pre-wrap;
 	font-family: 'Times';
+}
+
+#nav {
+	background-color: white;
+	a {
+		text-decoration: none;
+		font-family: 'Times';
+		font-size: 2em;
+		color: #545454;
+		margin-top: 10px;
+	}
+}
+
+#photo {
+	
+	img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		min-width: 750px;
+		max-width: 750px;
+	
+	}
 }
 
 
