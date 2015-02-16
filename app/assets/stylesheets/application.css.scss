@@ -63,7 +63,7 @@
  	}
 
 	#About {
-		align-self: center;
+			align-self: center;
 		a {
 			font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 			font-weight: 700; 
@@ -74,8 +74,11 @@
 				font-family: 'SlimJoe';
 				color: #545454;
 				/* The below keeps nav from shifting too much. */
-				padding-right: 2px;
-				padding-top: 3px;
+				
+				padding-left: 1px;
+
+				letter-spacing: .04em;
+				font-size: .97em;
 				/* Not sure why it happens. */
 
 			}
@@ -135,7 +138,7 @@
 		margin-right: auto;
 		min-width: 750px;
 		max-width: 750px;
-		
+		padding-right: 30px;
 		padding-top: 110px;
 	}
 }
