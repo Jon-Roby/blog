@@ -15,3 +15,25 @@
 //= require turbolinks
 //= require_tree .
 
+$(document).ready(function(){
+
+	$("#Photo").hide();
+	
+	var $overlay = $('<div id="overlay"></div>');
+	
+	//Add overlay
+	$("body").append($overlay);	
+
+	//Prevent user from visiting link.
+	$("#Bars a").click(function(event){
+		event.preventDefault();
+		
+		var href = $(this).attr("href");
+
+		//Show overlay
+		$overlay.show();
+		
+	});
+
+});
+

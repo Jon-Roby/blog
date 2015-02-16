@@ -143,6 +143,69 @@
 	}
 }
 
+/* BARS */
+
+#Bars {
+	min-width: 750px;
+	max-width: 750px;
+
+	position: relative;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	padding-right: 30px;
+
+ 	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+
+	padding-top: 110px;
+	margin-bottom: -2px;
+
+	background-color: white; /* #272727; #ff4040; */
+
+	li {
+		list-style-type: none;
+		img {
+			min-width: 20px;
+			max-width: 40px;
+		}
+	}
+}
+
+pre {
+	font-family: 'Archer SSm A', 'Archer SSm B'; 
+	font-weight: 500; 
+	font-style: normal;
+	font-size: .9em;
+}
+
+
+
+
+/* OVERLAY */
+
+#overlay {
+	background: rgba(0,0,0, 0.7);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+/* #overlay p {
+	color: white;
+} */
+
+
+
+
+
+
+
+
 
 
 
