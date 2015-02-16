@@ -16,7 +16,10 @@
 
 @import 'normalize';
 
-
+@font-face {
+  font-family: 'SlimJoe';
+  src: asset-url('slimjoe.otf') format("truetype");
+}
 
 
 body {
@@ -33,16 +36,27 @@ h1, h2, p {
 	font-family: 'Archer SSm A', 'Archer SSm B'; 
 	font-weight: 500; 
 	font-style: normal;
+	
+
 }
 
 #nav {
 	background-color: white;
+	text-align: center;
+	font-size: 1.5em;
+	display: flex;
 	a {
 		text-decoration: none;
-		font-family: 'Times';
+		font-family: 'SlimJoe';
 		font-size: 2em;
 		color: #545454;
 		margin-top: 10px;
+	}
+	#two a {
+		font-family: 'Gotham SSm A', 'Gotham SSm B'; 
+		font-weight: 700; 
+		font-style: normal;
+		
 	}
 }
 
