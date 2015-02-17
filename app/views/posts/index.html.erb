@@ -1,137 +1,142 @@
-<ul id="Bars">
-	<li class="photo"><%= link_to(image_tag("bar1.jpg"), bar1_path, id: "bar1") %></li>
-	<li class="photo"><%= link_to(image_tag("bar2.jpg"), bar2_path, id: "bar2") %></li>
-	<li class="photo"><%= image_tag("bar3.jpg") %></li>
-	<li class="photo"><%= image_tag("bar4.jpg") %></li>
-	<li class="photo"><%= image_tag("bar5.jpg") %></li>
-	<li class="photo"><%= image_tag("bar6.jpg") %></li>
-	<li class="photo"><%= image_tag("bar7.jpg") %></li>
-	<li class="photo"><%= image_tag("bar8.jpg") %></li>
-	<li class="photo"><%= image_tag("bar9.jpg") %></li>
-	<li class="photo"><%= image_tag("bar10.jpg") %></li>
+<ul id="Bar_Image_Wrapper">
+	<li id="Bar1"><%= image_tag("bar1.jpg") %></li>
+	<li id="Bar2"><%= image_tag("bar2.jpg") %></li>
+	<li id="Bar3"><%= image_tag("bar3.jpg") %></li>
+	<li id="Bar4"><%= image_tag("bar4.jpg") %></li>
+	<li id="Bar5"><%= image_tag("bar5.jpg") %></li>
+	<li id="Bar6"><%= image_tag("bar6.jpg") %></li>
+	<li id="Bar7"><%= image_tag("bar7.jpg") %></li>
+	<li id="Bar8"><%= image_tag("bar8.jpg") %></li>
+	<li id="Bar9"><%= image_tag("bar9.jpg") %></li>
+	<li id="Bar10"><%= image_tag("bar10.jpg") %></li>
 </ul>
 
 
 
-<div id="bar1text" class="barclass">
-Algorithms Unlocked, p.31
+<%# The children of this div (#BarX_Notes) are hidden until a user clicks on the corresponding #BarX listed above. Once clicked, the notes display in a light box. Continue to look%>
+<div id="Bar_Notes_Wrapper">
+	<div id="Bar1_Notes">
+	Algorithms Unlocked, p.31
 
-	Recursive-Binary-Search(A, p, r, x)
+		Recursive-Binary-Search(A, p, r, x)
 
-	Inputs and Outputs: Input A is the array and x is the value being searched for. The inputs p and r delineate the subarray A[p..r] under consideration.
+		Inputs and Outputs: Input A is the array and x is the value being searched for. The inputs p and r delineate the subarray A[p..r] under consideration.
 
-	1. If p > r, then return Not-Found.
-	2. Otherwise (p <= r), do the following:
-		A. Set q to (p + r)/2.
-		B. If A[q] = x, then return q.
-		C. Otherwise (A[q] != x), if A[q] > x, then return
-		   Recursive-Binary-Search(A, p, q - 1, x).
-		D. Otherwise (A[q] < x), return
-		   Recursive-Binary-Search(A, q + 1, r, x).
+		1. If p > r, then return Not-Found.
+		2. Otherwise (p <= r), do the following:
+			A. Set q to (p + r)/2.
+			B. If A[q] = x, then return q.
+			C. Otherwise (A[q] != x), if A[q] > x, then return
+			   Recursive-Binary-Search(A, p, q - 1, x).
+			D. Otherwise (A[q] < x), return
+			   Recursive-Binary-Search(A, q + 1, r, x).
 
-=end
+	=end
 
-def recursive_binary_search(array, key, p = 0, r = array.length - 1)
-	if p > r || key > array[array.length-1]
-		return "key not found"
-	else
-		q = (p + r)/2
-		if array[q] == key 
-			return q
-		elsif array[q] > key
-			return recursive_binary_search(array, key, p, q - 1)
-		elsif array[q] < key
-			return recursive_binary_search(array, key, q + 1, r)
+	def recursive_binary_search(array, key, p = 0, r = array.length - 1)
+		if p > r || key > array[array.length-1]
+			return "key not found"
+		else
+			q = (p + r)/2
+			if array[q] == key 
+				return q
+			elsif array[q] > key
+				return recursive_binary_search(array, key, p, q - 1)
+			elsif array[q] < key
+				return recursive_binary_search(array, key, q + 1, r)
+			end
 		end
 	end
-end
+	</div>
+
+	<div id="Bar2_Notes">
+	Math for CS
+
+	Chapter 1 Propositions\r\n
+
+	The quadratic formula is $$ $-b \pm \sqrt{b^2 - 4ac} \over 2a$ $$
+	\bye 
+
+	Definition. A proposition is a statement that is either true or false. 2 + 3 = 5 
+
+	P 	Not(P)
+	T	F
+	F	T
+
+	P 	Q	P and Q
+	T	T	T
+	T	F	F
+	F	T	F
+	F	F	F
+
+	P 	Q	P or Q
+	T	T	T
+	T	F	T
+	F	T	T
+	F	F	F
+
+	P 	Q	P xor Q
+	T	T	F
+	T	F	T	
+	F	T	T
+	F	F	F
+
+	P 	Q	P implies Q
+	T	T	T
+	T	F	F	
+	F	T	T
+	F	F	T
+
+	P 	Q	P iff Q
+	T	T	T
+	T	F	F	
+	F	T	F
+	F	F	T
+
+	P	Q	P implies Q	Not(Q) implies Not(P)
+	T	T	T		T
+	T	F	F		F
+	F	T	T		T
+	F	F	T		T
+
+	Consider this proposition: for every nonnegative integer, n, the value of n^2 + n + 41 is prime. It is isn’t immediately clear whether this proposition is false. The proposition as it turns out, is false.
+
+	For all n element Natural. p(n) is prime.
+
+	a^4 + b^4 + c^4 = d^4 has no solution when a,b,c,d are positive integers.
+
+	This can be written: (pg. 9)
+
+	A predicate is a proposition whose truth depends on the value of one or more variables. For example, “n is a perfect square” is a predicate whose truth value depends on the value of n. Like other propositions, predicates are often named with a letter. Furthermore, a function-like notation is used to denote a predicate supplied with specific variable values. For example, we might name our earlier predicate P:
+
+	P(n) ::= “n is a perfect square”
+
+	So P(4) is true and P(5) is false.
+
+	This notation for predicates is confusingly similar to ordinary function notation. If P is a predicate, then P(n) is either true or false, depending on the value of n. On the other hand, if p is an ordinary function, like n2+n, then p(n) is a numerical quantity. Don’t confuse the two!
+
+	There are a couple of assertions commonly made about a predicate: that it is sometimes true and that it is always true. The predicate “x2 >= 0” is always true and “5x2-7=0” is sometimes true.
+
+	Write out notation. The universal quantifier symbol A is read “for all”. The existential quantifier is read “there exists”.
+
+	Swapping the order of different kinds of quantifiers usually changes the meaning. Consider the statement “Every American has a dream”. Let A be the set of Americans, let D be the set of dreams, and define the predicate H(a,d) to be “American a has a dream d”. So the sentence could mean that there is a single dream that every American shares:
+
+	Ed element D. Alla element A. H(a,d)
+
+	Or it could mean that every American has a personal dream:
+
+	Alla element A. Ed element D. H(a,d).
+
+	NOT ( forall x. P(x)) is equivalent to exists x. Not(P(x)).
+
+	The general principle is that moving a “not” across a quantifier changes the kind of quantifier.
+	</div>
+
+	<div id="Bar3_Notes">
+		\begin{cases}1 & -1 \le x < 0 \\ \frac{1}{2} & x = 0 \\ 1 - x^2 & \text{otherwise} \end{cases}$
+	</div>
+
 </div>
-
-<div id="bar2text" class="barclass">
-Math for CS
-
-Chapter 1 Propositions\r\n
-
-The quadratic formula is $$ $-b \pm \sqrt{b^2 - 4ac} \over 2a$ $$
-\bye 
-
-Definition. A proposition is a statement that is either true or false. 2 + 3 = 5 
-
-P 	Not(P)
-T	F
-F	T
-
-P 	Q	P and Q
-T	T	T
-T	F	F
-F	T	F
-F	F	F
-
-P 	Q	P or Q
-T	T	T
-T	F	T
-F	T	T
-F	F	F
-
-P 	Q	P xor Q
-T	T	F
-T	F	T	
-F	T	T
-F	F	F
-
-P 	Q	P implies Q
-T	T	T
-T	F	F	
-F	T	T
-F	F	T
-
-P 	Q	P iff Q
-T	T	T
-T	F	F	
-F	T	F
-F	F	T
-
-P	Q	P implies Q	Not(Q) implies Not(P)
-T	T	T		T
-T	F	F		F
-F	T	T		T
-F	F	T		T
-
-Consider this proposition: for every nonnegative integer, n, the value of n^2 + n + 41 is prime. It is isn’t immediately clear whether this proposition is false. The proposition as it turns out, is false.
-
-For all n element Natural. p(n) is prime.
-
-a^4 + b^4 + c^4 = d^4 has no solution when a,b,c,d are positive integers.
-
-This can be written: (pg. 9)
-
-A predicate is a proposition whose truth depends on the value of one or more variables. For example, “n is a perfect square” is a predicate whose truth value depends on the value of n. Like other propositions, predicates are often named with a letter. Furthermore, a function-like notation is used to denote a predicate supplied with specific variable values. For example, we might name our earlier predicate P:
-
-P(n) ::= “n is a perfect square”
-
-So P(4) is true and P(5) is false.
-
-This notation for predicates is confusingly similar to ordinary function notation. If P is a predicate, then P(n) is either true or false, depending on the value of n. On the other hand, if p is an ordinary function, like n2+n, then p(n) is a numerical quantity. Don’t confuse the two!
-
-There are a couple of assertions commonly made about a predicate: that it is sometimes true and that it is always true. The predicate “x2 >= 0” is always true and “5x2-7=0” is sometimes true.
-
-Write out notation. The universal quantifier symbol A is read “for all”. The existential quantifier is read “there exists”.
-
-Swapping the order of different kinds of quantifiers usually changes the meaning. Consider the statement “Every American has a dream”. Let A be the set of Americans, let D be the set of dreams, and define the predicate H(a,d) to be “American a has a dream d”. So the sentence could mean that there is a single dream that every American shares:
-
-Ed element D. Alla element A. H(a,d)
-
-Or it could mean that every American has a personal dream:
-
-Alla element A. Ed element D. H(a,d).
-
-NOT ( forall x. P(x)) is equivalent to exists x. Not(P(x)).
-
-The general principle is that moving a “not” across a quantifier changes the kind of quantifier.
-</div>
-
-
-
 
 
 
@@ -147,6 +152,6 @@ The general principle is that moving a “not” across a quantifier changes the
 	<%# <h2><%= link_to post.title, post %> <%#</h2>
 <% end %> <%# %>
 
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script>
+
 
 	

@@ -16,23 +16,17 @@
 
 @import 'normalize';
 
+//Font for 'JON' on #Nav.
 @font-face {
   font-family: 'SlimJoe';
   src: asset-url('slimjoe.otf') format("truetype");
 }
 
-
-
-
-/* {
-	white-space: pre-wrap;
-
-	font-family: 'Archer SSm A', 'Archer SSm B'; 
-	font-weight: 500; 
-	font-style: normal;
-} */
-
-
+//Font for the notes, which appear in lightbox.
+@font-face {
+	font-family: 'Latin-Modern';
+	src: asset-url('latinmodern_math.otf') format("opentype");
+}
 
 
 
@@ -73,6 +67,7 @@
 			&:hover {
 				font-weight: 200;
 				color: #545454;
+				transition-duration: .2s;
 			}
 		}
 	}
@@ -113,6 +108,7 @@
 				font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 				font-weight: 700; 
 				font-style: normal;
+				transition-duration: .2s;
 			}
 		}
 	}
@@ -120,7 +116,7 @@
 
 
 
-/* PHOTO */
+/* Home Picture */
 
 #Photo {
 	
@@ -137,7 +133,7 @@
 
 /* BARS */
 
-#Bars {
+#Bar_Image_Wrapper {
 	min-width: 750px;
 	max-width: 750px;
 
@@ -152,22 +148,32 @@
 	align-items: flex-end;
 
 	padding-top: 110px;
-	margin-bottom: -2px;
+	
 
 	background-color: white; /* #272727; #ff4040; */
 
 	li {
 		list-style-type: none;
 
+		//Required for overlay to display on bar images.
+		position: relative;
 		img {
 			min-width: 20px;
 			max-width: 40px;
-			
 		}
 	}
 }
 
-.barclass {
+
+
+#Bar_Image_Wrapper li {
+	
+}
+
+
+
+//This hides all of the barnotes until user clicks on a bar. 
+#Bar_Notes_Wrapper div {
 	display: none;
 	max-width: 100px;
 }
@@ -184,12 +190,11 @@
 	top: 0;
 	left: 0;
 	display: none;
+
 	
 	div {
-		font-family: 'Archer SSm A', 'Archer SSm B'; 
-		font-weight: 400; 
-		font-style: normal;
-		font-size: .90em;
+		font-family:  "Latin-Modern"; 
+		
 
 		white-space: pre-wrap;
 		
@@ -209,8 +214,23 @@
 	}
 }
 
+.Archer {
+	font-family: 'Archer SSm A', 'Archer SSm B'; 
+	font-weight: 400; 
+	font-style: normal;
+}
+
+.Gotham {
+	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
+	font-weight: 500; 
+	font-style: normal;
+	
+	color: #333333;
+}
 
 
+
+/* <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script> */
 
 
 

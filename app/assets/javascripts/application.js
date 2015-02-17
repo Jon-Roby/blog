@@ -15,15 +15,39 @@
 //= require turbolinks
 //= require_tree .
 
+
+
+//Darkens bar in index.html.erb when cursor hovers
+/* 
+$(document).ready(function(){
+	
+});
+*/
+
+
+
+//Lightbox with notes appears when bar in index.html.erb is clicked.
 $(document).ready(function(){
 
-	
-	$("#Bars a").click(function(event){
-		event.preventDefault();
 
+
+	//Darkens bar in index.html.erb when cursor hovers
+	var $overlay = $('<div id="overlay"></div>');
+		$("#Bar_Image_Wrapper li")
+			.mouseenter(function(){
+				$(this).append($overlay.show());
+			})
+			.mouseleave(function(){
+				$overlay.hide();
+			});
+
+
+	//Lightbox with notes appears when accompanying bar with same number is clicked.
+	$("#Bar_Image_Wrapper li").click(function(){
+		
 		var $barNum = $(this).attr('id')
-		var $note = $('#' + $barNum + 'text').show();
-		console.log($note)
+		var $note = $('#' + $barNum + '_Notes').show();
+		
 		var $overlay = $('<div id="overlay"></div>');
 		$overlay.append($note);
 	
@@ -39,4 +63,8 @@ $(document).ready(function(){
 
 	});
 
-});
+}); 
+
+
+
+
