@@ -13,6 +13,52 @@
 
 
 
+<div id="notestext">
+Algorithms Unlocked, p.31
+
+	Recursive-Binary-Search(A, p, r, x)
+
+	Inputs and Outputs: Input A is the array and x is the value being searched for. The inputs p and r delineate the subarray A[p..r] under consideration.
+
+	1. If p > r, then return Not-Found.
+	2. Otherwise (p <= r), do the following:
+		A. Set q to (p + r)/2.
+		B. If A[q] = x, then return q.
+		C. Otherwise (A[q] != x), if A[q] > x, then return
+		   Recursive-Binary-Search(A, p, q - 1, x).
+		D. Otherwise (A[q] < x), return
+		   Recursive-Binary-Search(A, q + 1, r, x).
+
+=end
+
+def recursive_binary_search(array, key, p = 0, r = array.length - 1)
+	if p > r || key > array[array.length-1]
+		return "key not found"
+	else
+		q = (p + r)/2
+		if array[q] == key 
+			return q
+		elsif array[q] > key
+			return recursive_binary_search(array, key, p, q - 1)
+		elsif array[q] < key
+			return recursive_binary_search(array, key, q + 1, r)
+		end
+	end
+end
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

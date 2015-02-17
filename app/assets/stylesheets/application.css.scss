@@ -62,25 +62,16 @@
  		text-decoration: none;
  	}
 
-	#About {
+	#Notes {
 			align-self: center;
 		a {
 			font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 			font-weight: 700; 
 			font-style: normal;
-		
 			color: #333333;
 			&:hover {
-				font-family: 'SlimJoe';
+				font-weight: 200;
 				color: #545454;
-				/* The below keeps nav from shifting too much. */
-				
-				padding-left: 1px;
-
-				letter-spacing: .04em;
-				font-size: .97em;
-				/* Not sure why it happens. */
-
 			}
 		}
 	}
@@ -108,7 +99,7 @@
 		}
 	}
 
-	#Notes {
+	#About {
 		align-self: center;
 		a {
 			font-family: 'Gotham SSm A', 'Gotham SSm B'; 
@@ -166,38 +157,57 @@
 
 	li {
 		list-style-type: none;
+
 		img {
 			min-width: 20px;
 			max-width: 40px;
+			
 		}
 	}
 }
 
-pre {
-	font-family: 'Archer SSm A', 'Archer SSm B'; 
-	font-weight: 500; 
-	font-style: normal;
-	font-size: .9em;
+#notestext {
+	display: none;
+	max-width: 100px;
 }
-
 
 
 
 /* OVERLAY */
 
 #overlay {
-	background: rgba(0,0,0, 0.7);
+	background: rgba(0,0,0, 0.75);
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 	display: none;
+	
+	div {
+		font-family: 'Archer SSm A', 'Archer SSm B'; 
+		font-weight: 400; 
+		font-style: normal;
+		font-size: .90em;
+
+		white-space: pre-wrap;
+		
+
+		background: white;
+		color: #333333;
+
+		max-width: 500px;
+		max-height: 300px;
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20%;
+		
+		overflow-x: auto;
+
+	}
 }
 
-/* #overlay p {
-	color: white;
-} */
 
 
 
