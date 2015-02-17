@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/algorithms', to: 'pages#algorithms'
 
   get '/bar1', to: 'posts#bar1'
+  get '/bar2', to: 'posts#bar2'
 end

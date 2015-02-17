@@ -54,6 +54,7 @@
  	
  	align-content: space-around;
 
+ 	padding-top: 20px;
  	padding-right: 85px;
 
  	li {
@@ -166,7 +167,7 @@
 	}
 }
 
-#notestext {
+.barclass {
 	display: none;
 	max-width: 100px;
 }
@@ -201,7 +202,7 @@
 		position: relative;
 		margin-left: auto;
 		margin-right: auto;
-		margin-top: 20%;
+		margin-top: 150px;
 		
 		overflow-x: auto;
 

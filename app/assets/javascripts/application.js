@@ -15,20 +15,16 @@
 //= require turbolinks
 //= require_tree .
 
-
-
-
 $(document).ready(function(){
 
-	//Prevent user from visiting link.
+	
 	$("#Bars a").click(function(event){
 		event.preventDefault();
 
-		var noteLocation = $(this).attr("href")
+		var $barNum = $(this).attr('id')
+		var $note = $('#' + $barNum + 'text').show();
 
 		var $overlay = $('<div id="overlay"></div>');
-		var $note = $("#notestext").show();
-
 		$overlay.append($note);
 	
 		//Add overlay
@@ -42,8 +38,3 @@ $(document).ready(function(){
 		}); 
 
 	});
-
-	
-
-});
-
