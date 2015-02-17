@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 		var $barNum = $(this).attr('id')
 		var $note = $('#' + $barNum + 'text').show();
-
+		console.log($note)
 		var $overlay = $('<div id="overlay"></div>');
 		$overlay.append($note);
 	
@@ -38,3 +38,5 @@ $(document).ready(function(){
 		}); 
 
 	});
+
+});
