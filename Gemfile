@@ -13,6 +13,8 @@ gem 'spring',        group: :development
 gem 'devise', '~> 3.4.1'
 gem 'mathjax-rails'
 
+gem 'jquery-turbolinks'
+
 group :development, :test do 
 	gem 'sqlite3'
 end
