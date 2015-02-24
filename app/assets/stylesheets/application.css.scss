@@ -16,6 +16,8 @@
 
 @import 'normalize';
 
+
+
 //Font for 'JON' on #Nav.
 @font-face {
   font-family: 'SlimJoe';
@@ -28,6 +30,10 @@
 	src: asset-url('latinmodern_math.otf') format("opentype");
 }
 
+@font-face {
+	font-family: 'Latin-Modern2';
+	src: asset-url('latinmodern-math2.otf') format("opentype");
+}
 
 
 /* NAVBAR */
@@ -58,17 +64,15 @@
  	}
 
 	#Notes {
-			align-self: center;
-		a {
-			font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-			font-weight: 700; 
-			font-style: normal;
-			color: #333333;
-			&:hover {
-				font-weight: 200;
-				color: #545454;
-				transition-duration: .2s;
-			}
+		align-self: center;
+		font-family: 'Gotham SSm A', 'Gotham SSm B'; 
+		font-weight: 700; 
+		font-style: normal;
+		color: #333333;
+		&:hover {
+			font-weight: 200;
+			color: #545454;
+			transition-duration: .2s;
 		}
 	}
 
@@ -76,41 +80,41 @@
 		align-self: center;
 		padding-top: 8px;
 		padding-left: 250px;
-		a {
+		
 			font-family: 'SlimJoe';
 			font-size: 2.2em;
 			color: #545454;
 			letter-spacing: .02em;
-		}
+		
 	}
 
 	#Roby {
 		padding-right: 250px;
-		a {
+		
 			font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 			font-weight: 700; 
 			font-style: normal;
 			font-size: 2.5em;
 			color: #333333;
-		}
+		
 	}
 
-	#About {
+	#AboutNav {
 		align-self: center;
-		a {
+		
+		font-family: 'Gotham SSm A', 'Gotham SSm B'; 
+		font-weight: 200; 
+		font-style: normal;
+		
+		text-decoration: none;
+		color: #545454;
+		&:hover {
 			font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-			font-weight: 200; 
+			font-weight: 700; 
 			font-style: normal;
-			
-			text-decoration: none;
-			color: #545454;
-			&:hover {
-				font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-				font-weight: 700; 
-				font-style: normal;
-				transition-duration: .2s;
-			}
+			transition-duration: .2s;
 		}
+		
 	}
 }
 
@@ -118,67 +122,74 @@
 
 /* Home Picture */
 
+
+
 #Photo {
-	
 	img {
+
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
 		min-width: 750px;
 		max-width: 750px;
+		
 		padding-right: 30px;
 		padding-top: 110px;
+		
 	}
 }
 
 /* BARS */
 
 #Bar_Image_Wrapper {
+	
 	min-width: 750px;
 	max-width: 750px;
 
 	position: relative;
  	margin-left: auto;
  	margin-right: auto;
- 	padding-right: 30px;
-
+ 	
  	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-end;
-
+	
 	padding-top: 110px;
 	
 
-	background-color: white; /* #272727; #ff4040; */
-
 	li {
 		list-style-type: none;
-
 		//Required for overlay to display on bar images.
 		position: relative;
+		display: none;
+
 		img {
-			min-width: 20px;
+			min-width: 30px;
 			max-width: 40px;
+			//This removes white space at bottom of li.
+			display: block;
+
 		}
 	}
 }
-
-
-
-#Bar_Image_Wrapper li {
-	
-}
-
 
 
 //This hides all of the barnotes until user clicks on a bar. 
 #Bar_Notes_Wrapper div {
 	display: none;
 	max-width: 100px;
+
 }
 
 
+
+#treebranch, #venn, #venn2 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto; //This sets top and bottom margins to 0 and left and right to auto.
+	width: 50%;
+}
 
 /* OVERLAY */
 
@@ -193,7 +204,7 @@
 
 	
 	div {
-		font-family:  "Latin-Modern"; 
+		font-family:  "Latin-Modern2"; 
 		
 
 		white-space: pre-wrap;
@@ -202,8 +213,8 @@
 		background: white;
 		color: #333333;
 
-		max-width: 500px;
-		max-height: 300px;
+		max-width: 700px;
+		max-height: 500px;
 		position: relative;
 		margin-left: auto;
 		margin-right: auto;
@@ -212,6 +223,11 @@
 		overflow-x: auto;
 
 	}
+}
+
+#About {
+	
+	display: none;
 }
 
 .Archer {
@@ -226,6 +242,11 @@
 	font-style: normal;
 	
 	color: #333333;
+}
+
+.ruby {
+	font-size: .8em;
+	text-indent: 10px;
 }
 
 

@@ -18,19 +18,25 @@
 
 
 
-//Darkens bar in index.html.erb when cursor hovers
-/* 
-$(document).ready(function(){
-	
-});
-*/
-
 
 
 //Lightbox with notes appears when bar in index.html.erb is clicked.
 $(document).ready(function(){
 
+	MathJax.Hub.Config({
+	  "HTML-CSS": {
+	    availableFonts: [],
+	    preferredFont: null,
+	    webFont: "Latin-Modern"
+	    
+	  }
+	});
 
+	$(document).ready(function() {
+	  $('pre code').each(function(i, block) {
+	    hljs.highlightBlock(block);
+	  });
+	});
 
 	//Darkens bar in index.html.erb when cursor hovers
 	var $overlay = $('<div id="overlay"></div>');
@@ -45,7 +51,7 @@ $(document).ready(function(){
 
 	//Lightbox with notes appears when accompanying bar with same number is clicked.
 	$("#Bar_Image_Wrapper li").click(function(){
-		
+
 		var $barNum = $(this).attr('id')
 		var $note = $('#' + $barNum + '_Notes').show();
 		
@@ -63,6 +69,58 @@ $(document).ready(function(){
 		}); 
 
 	});
+
+
+	//Hides photo bars and shows main picture.
+	$("#Notes").click(function(){
+		$('#Photo #homeimage').fadeOut(1000, function(){
+			$('#Bar_Image_Wrapper li').slideDown(1000);
+			$('#About').hide();
+		});
+	});
+
+	//Hides photo bars and shows main picture.
+	$("#Photo #homeimage").click(function(){
+		$('#Photo #homeimage').fadeOut(1000, function(){
+			$('#Bar_Image_Wrapper li').slideDown(1000);
+			$('#About').hide();
+		});
+	});
+
+	//Hides main picture and shows photo bars.
+	$("#Jon").click(function(){
+		$('#Bar_Image_Wrapper li').slideUp(1000, function(){
+			$('#Photo #homeimage').fadeIn(1000);
+			$('#About').hide();
+		});
+	});
+
+	//Hides main picture and shows photo bars.
+	$("#Roby").click(function(){
+		$('#Bar_Image_Wrapper li').slideUp(1000, function(){
+			$('#Photo #homeimage').fadeIn(1000);
+			$('#About').hide();
+		});
+	});
+
+	//Shows the navigation.
+	$("#AboutNav").click(function(){
+		$('#Bar_Image_Wrapper li').slideUp(1000, function(){
+			$('#Photo #homeimage').fadeOut(1000);
+			$('#About').fadeIn(1000);
+		});
+	});
+
+
+	//Darken the main image
+	$("#Photo #homeimage")
+		.mouseenter(function(){
+			$("#Photo #homeimage").append($overlay.show());
+		})
+		.mouseleave(function(){
+			$overlay.hide();
+		});
+
 
 }); 
 

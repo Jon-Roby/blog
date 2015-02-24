@@ -1,3 +1,5 @@
+<div id="Photo"><%= image_tag("notesphotosplit.jpg", id: "homeimage") %></div>
+
 <ul id="Bar_Image_Wrapper">
 	<li id="Bar1"><%= image_tag("bar1.jpg") %></li>
 	<li id="Bar2"><%= image_tag("bar2.jpg") %></li>
@@ -15,126 +17,908 @@
 
 <%# The children of this div (#BarX_Notes) are hidden until a user clicks on the corresponding #BarX listed above. Once clicked, the notes display in a light box. Continue to look%>
 <div id="Bar_Notes_Wrapper">
+
 	<div id="Bar1_Notes">
-	Algorithms Unlocked, p.31
 
-		Recursive-Binary-Search(A, p, r, x)
+Chapter 1, Chapter 2, and Chapter 3 Propositions, Proofs, and Mathematical Induction
 
-		Inputs and Outputs: Input A is the array and x is the value being searched for. The inputs p and r delineate the subarray A[p..r] under consideration.
+Definition. A proposition is a statement that is either true or false. 2 + 3 = 5 
 
-		1. If p > r, then return Not-Found.
-		2. Otherwise (p <= r), do the following:
-			A. Set q to (p + r)/2.
-			B. If A[q] = x, then return q.
-			C. Otherwise (A[q] != x), if A[q] > x, then return
-			   Recursive-Binary-Search(A, p, q - 1, x).
-			D. Otherwise (A[q] < x), return
-			   Recursive-Binary-Search(A, q + 1, r, x).
+P 	Not(P)
+T	F
+F	T
 
-	=end
+P 	Q	P \( \wedge \) Q
+T	T	T
+T	F	F
+F	T	F
+F	F	F
 
-	def recursive_binary_search(array, key, p = 0, r = array.length - 1)
-		if p > r || key > array[array.length-1]
-			return "key not found"
-		else
-			q = (p + r)/2
-			if array[q] == key 
-				return q
-			elsif array[q] > key
-				return recursive_binary_search(array, key, p, q - 1)
-			elsif array[q] < key
-				return recursive_binary_search(array, key, q + 1, r)
-			end
-		end
-	end
+P 	Q	P or Q
+T	T	T
+T	F	T
+F	T	T
+F	F	F
+
+P 	Q	P xor Q
+T	T	F
+T	F	T	
+F	T	T
+F	F	F
+
+P 	Q	P implies Q
+T	T	T
+T	F	F	
+F	T	T
+F	F	T
+
+P 	Q	P iff Q
+T	T	T
+T	F	F	
+F	T	F
+F	F	T
+
+P	Q	P implies Q	Not(Q) implies Not(P)
+T	T	T		T
+T	F	F		F
+F	T	T		T
+F	F	T		T
+
+Consider this proposition: for every nonnegative integer, n, the value of n^2 + n + 41 is prime. It is isn’t immediately clear whether this proposition is false. The proposition as it turns out, is false.
+
+For all n element Natural. p(n) is prime.
+
+a^4 + b^4 + c^4 = d^4 has no solution when a,b,c,d are positive integers.
+
+This can be written: (pg. 9)
+
+A predicate is a proposition whose truth depends on the value of one or more variables. For example, “n is a perfect square” is a predicate whose truth value depends on the value of n. Like other propositions, predicates are often named with a letter. Furthermore, a function-like notation is used to denote a predicate supplied with specific variable values. For example, we might name our earlier predicate P:
+
+P(n) ::= “n is a perfect square”
+
+So P(4) is true and P(5) is false.
+
+This notation for predicates is confusingly similar to ordinary function notation. If P is a predicate, then P(n) is either true or false, depending on the value of n. On the other hand, if p is an ordinary function, like n2+n, then p(n) is a numerical quantity. Don’t confuse the two!
+
+There are a couple of assertions commonly made about a predicate: that it is sometimes true and that it is always true. The predicate “x2 >= 0” is always true and “5x2-7=0” is sometimes true.
+
+Write out notation. The universal quantifier symbol A is read “for all”. The existential quantifier is read “there exists”.
+
+Swapping the order of different kinds of quantifiers usually changes the meaning. Consider the statement “Every American has a dream”. Let A be the set of Americans, let D be the set of dreams, and define the predicate H(a,d) to be “American a has a dream d”. So the sentence could mean that there is a single dream that every American shares:
+
+Ed element D. Alla element A. H(a,d)
+
+Or it could mean that every American has a personal dream:
+
+Alla element A. Ed element D. H(a,d).
+
+NOT ( forall x. P(x)) is equivalent to exists x. Not(P(x)).
+
+The general principle is that moving a “not” across a quantifier changes the kind of quantifier.
+
+
+
+
+
+
+
+Chapter 2
+
+
+
+
+Chapter 2 Patterns of Proof
+
+A proof is a sequence of logical deductions from axioms and previously proved statements that concluded with the proposition in question.
+
+Important propositions are called theorems. A lemma is a preliminary proposition useful for proving later propositions. A corollary is a proposition that follows in just a few logical steps from a lemma or a theorem. 
+
+Logical deductions or inference rules are used to prove new propositions using previously proved ones. A fundamental inference rule is modus ponens.
+
+P, P implies Q
+Q
+
+When the statements above the line, called the antecedents, are proved, then we can consider the statement below the line, called the conclusion, or consequent, to also be proved.
+
+A key requirement of an inference rule is that it must be sound. Any assignment of truth values that makes all the antecedents true must also make the consequent true. 
+
+P implies Q, Q implies R
+P implies R
+
+P implies Q, Not(Q)
+Not(P)
+
+Not(P) implies Not(Q)
+P implies Q
+
+Proof by cases works by breaking a complicated proof into cases and proving each case separately. Example:
+
+Theorem. Every collection of 6 people includes a club of 3 people or a group of 3 strangers.
+
+Proof. The proof is by case analysis. Let x denote one of the six people. There are two cases:
+Among the other 5 people besides x, at least 3 have met x.
+Among the other 5 people, at least 3 have not met x.
+
+Case 1: Suppose that at least 3 people have met x.
+Case 1.1 Among the people who have met x, none have met each other. Then the people who have met x are a group of at least 3 strangers. So the theorem holds in this case.
+Case 1.2 Among the people who have met x, some pair have met each other. Then that pair, together with x, form a club of 3 people. So the theorem holds in this subcase.
+
+Case 2: Suppose that at least 3 people have not met x.
+Case 2.1 Among the people who have not met x, every pair has met each other. Then the people who have not met x are a club of at least 3 people. So the theorem holds in this subcase.
+Case 2.2 Among the people who have not met x, some pair have not met each other. Then that pair, together with x, form a group of at least 3 strangers. So the theorem holds in this subcase.
+ This implies that the theorem holds in both case 1 and case 2, and therefore holds in all cases. QED.
+
+To prove an implication you can assume that P is true and P is false. Since when P is false, P implies Q is true no matter what Q is. This case is so easy that we just forget about it and start off by assuming that P is true when proving an implication. So write, “Assume P” and then show that Q logically follows.
+
+With a proof by contradiction you show that if a proposition were false, then some false fact would be true. So the proposition must really be true. In order to prove a proposition P by contradiction: write “We use proof by contradiction” then write “suppose P is false”, deduce something known to be false (a logical contradiction), then write “this is a contradiction. Therefore P must be true”. 
+
+Theorem. sqrt(2) is irrational.
+
+Proof. We use proof by contradiction. Suppose the claim is false; that is, sqrt2 is rational. Then we can write rt2 as a fraction n/d where n and d are positive integers. Furthermore, let’s take n and d so that n/d is in lowest terms (that is, there is no number greater than 1 that divides both n and d).
+
+Squaring both sides gives 2 = n2 / d2 and so 2d2 = n2. This implies that n is a multiple of 2. Therefore n2 must be a multiple of 4. But since 2d2 = n2, we know 2d2 is a multiple of 4 and so d2 is a multiple of 2. This implies that d is a multiple of 2. So the numerator and denominator have 2 as a common factor, which contradicts the fact that n/d is in lowest terms. So rt2 must be irrational. QED.
+
+empty set			none
+nonnegative integers		{0,1,2,3,…}
+integers			{…,-3,-2,-1,0,1,2,3,…}
+rational numbers		1/2, 16
+real numbers			pi, e, -9, rt., etc.
+complex numbers		i, 19/2, rt. - 2i, etc.
+
+A superscript “+” restricts a set to its positive elements. For example R+ denotes the set of positive real numbers. Similarly, R- denotes the set of negative reals.
+
+S T indicates that S is a subset of T.
+
+The union of sets X and Y (denoted X u Y) contains all elements appearing in X or Y or both.
+
+The intersection of X and Y (denoted X Y) consists of all elements that appear in both X and Y. 
+
+The set difference of X and Y (denoted X - Y) consists of all elements that are in X, but not in Y. 
+
+For any subset A of D, we defined notA to be the set of a
+ll elements of D not in A. That is, notA ::= D - A (set difference). The set notA is called the complement of A.
+
+The cardinality of a set A is the number of elements in A and is denoted by |A|.
+
+The set of all subsets of A is called the power set of A. If A has n elements, then there are 2^n sets in P(A). In other words, if A is finite, then |P(A)| = 2^|A|. Sets provide on way to strop a collection of objects. 
+
+A sequence is another way to group a collection of objects. It is a list of objects called terms or components. The elements of a set are required to be distinct but terms in a sequence can be the same. Thus, (a,b,c) is a valid sequence of length three, but {a,b,a} is a set of with two elements. Not three. The terms in a sequence have a specified order, but the elements of a set do not. For example, (a,b,c) and (a,c,b) are difference sequences, but {a,b,c} and {a,c,b} are the same set. 
+
+The product operation is one link between sets and sequences. A product of sets, S1 x S2 x … x Sn, is a new set consisting of all sequences where the first component is drawn from S1, the second from S2 and so forth. A product of n copies of a set S is denoted S^n. 
+
+An important use of predicates is in set builder notation. Example:
+
+A::= {n element Natural | n is prime and n = 4k + 1 for some integer K }
+
+
+
 	</div>
+
+
 
 	<div id="Bar2_Notes">
-	Math for CS
 
-	Chapter 1 Propositions\r\n
+Big-Oh Notation and Recurrences - Chapter 9 and 10
 
-	The quadratic formula is $$ $-b \pm \sqrt{b^2 - 4ac} \over 2a$ $$
-	\bye 
+Tower of Hanoi Problem. Three posts and 64 disks. The only permitted action is removing the top disk from one post and dropping it onto another post. A larger disk can never lie above a smaller disk on any post.
 
-	Definition. A proposition is a statement that is either true or false. 2 + 3 = 5 
+Def. T\(_n\) = minimum number of moves for n disks.
 
-	P 	Not(P)
-	T	F
-	F	T
+T\(_1\) = 1
+T\(_2\) = 3
+T\(_3\) \( \leq \) 7
 
-	P 	Q	P and Q
-	T	T	T
-	T	F	F
-	F	T	F
-	F	F	F
+Now suppose you had 4 discs or more. How could you solve?
 
-	P 	Q	P or Q
-	T	T	T
-	T	F	T
-	F	T	T
-	F	F	F
+A recursive solution. For the first stage, the first \(n-1\) discs are moved. How many steps will this stage take? T\(_{n-1}\) steps. For the second stage, the \(n\)th disc is moved, which takes a single step. For the final stage, the \(n-1\) discs will be moved on top of the \(n\)th disc. This will take \(T_{n-1}\) steps. The sum of all the steps is T\(_{n-1}\) + T\(_{n-1}\) + 1 steps, or simplified, 2T\(_{n-1}\) + 1 steps.
 
-	P 	Q	P xor Q
-	T	T	F
-	T	F	T	
-	F	T	T
-	F	F	F
+T\(_n\) \( \leq \) 2T\(_{n-1}\) + 1
 
-	P 	Q	P implies Q
-	T	T	T
-	T	F	F	
-	F	T	T
-	F	F	T
+To prove by induction.
 
-	P 	Q	P iff Q
-	T	T	T
-	T	F	F	
-	F	T	F
-	F	F	T
+Inductive Hypothesis: \(T_n = 2^n - 1\)
 
-	P	Q	P implies Q	Not(Q) implies Not(P)
-	T	T	T		T
-	T	F	F		F
-	F	T	T		T
-	F	F	T		T
+Base Case: \(T_1 = 2^1 - 1 \)
 
-	Consider this proposition: for every nonnegative integer, n, the value of n^2 + n + 41 is prime. It is isn’t immediately clear whether this proposition is false. The proposition as it turns out, is false.
+Inductive Step: \(T_n = 2^n - 1 \rightarrow T_{n+1} = 2^{n+1} - 1 \)
 
-	For all n element Natural. p(n) is prime.
+\( T_{n+1} = 2T_n + 1 \) (adding 1 to n from the recurrence)
+\( T_{n+1} = 2(2^n - 1) + 1 \) 
+\( T_{n+1} = 2^{n+1} - 1 \)
 
-	a^4 + b^4 + c^4 = d^4 has no solution when a,b,c,d are positive integers.
+This method is called "guess and check". Another method is "brute force" or "expansion":
 
-	This can be written: (pg. 9)
+\( T_n = 1 + 2T_{n-1} \)
+\( = 1 + 2(1 + 2T_{n-2}) \) Plug
+\( = 1 + 2 + 4T_{n-2} \) Chug
+\( = 1 + 2 + 4(1 + 2T_{n-3}) \) Plug
+\( = 1 + 2 + 4 + 8T_{n-3} \) Chug
 
-	A predicate is a proposition whose truth depends on the value of one or more variables. For example, “n is a perfect square” is a predicate whose truth value depends on the value of n. Like other propositions, predicates are often named with a letter. Furthermore, a function-like notation is used to denote a predicate supplied with specific variable values. For example, we might name our earlier predicate P:
+The pattern that seems to be emerging is
 
-	P(n) ::= “n is a perfect square”
+= \( 1 + 2 + 4 \: + \: ... + \: 2^{i-1} + 2^{i}T_{n-i} \)
+= \( 1 + 2 + 4 \: + \: ... + \: 2^{n-2} + 2^{n-1}T_1 \)
+= \( 2^{n} - 1 \)
 
-	So P(4) is true and P(5) is false.
-
-	This notation for predicates is confusingly similar to ordinary function notation. If P is a predicate, then P(n) is either true or false, depending on the value of n. On the other hand, if p is an ordinary function, like n2+n, then p(n) is a numerical quantity. Don’t confuse the two!
-
-	There are a couple of assertions commonly made about a predicate: that it is sometimes true and that it is always true. The predicate “x2 >= 0” is always true and “5x2-7=0” is sometimes true.
-
-	Write out notation. The universal quantifier symbol A is read “for all”. The existential quantifier is read “there exists”.
-
-	Swapping the order of different kinds of quantifiers usually changes the meaning. Consider the statement “Every American has a dream”. Let A be the set of Americans, let D be the set of dreams, and define the predicate H(a,d) to be “American a has a dream d”. So the sentence could mean that there is a single dream that every American shares:
-
-	Ed element D. Alla element A. H(a,d)
-
-	Or it could mean that every American has a personal dream:
-
-	Alla element A. Ed element D. H(a,d).
-
-	NOT ( forall x. P(x)) is equivalent to exists x. Not(P(x)).
-
-	The general principle is that moving a “not” across a quantifier changes the kind of quantifier.
 	</div>
+
+
 
 	<div id="Bar3_Notes">
-		\begin{cases}1 & -1 \le x < 0 \\ \frac{1}{2} & x = 0 \\ 1 - x^2 & \text{otherwise} \end{cases}$
+
+Sets, Functions and Cardinality
+		<%# Indenting here, will mean it indents in the final format. %>
+Def. A set is an unordered collection of distinct elements. 
+
+Ex. {a,b,c} = {b,c,a}. However, {a,b,a} is not a set, though it is a collection (or multiset).
+
+Def. The cardinality of a set is the number of elements in a set. This is denoted by two vertical bars surrounding the letter that represents the set. 
+
+Def. A sequence is an ordered collection of elements (also called components, or terms) and these elements need not be distinct.
+
+Ex. (a,b,c) or (a,b,a) are both sequences.
+
+Def. A permutation of a set S is a sequence that contains every element of S exactly once.
+
+Ex. A set, {a,b,c}, and its permutations: (a,b,c), (b,c,a), (c,a,b), (c,b,a), (b,a,c), (a,c,b).
+
+When determining the sequences, there are three choices for the first item, two choices for the second item, and one choice for the third item. To determine the perumation of a set with n elements, = \( n \times (n-1) \times ... \times 1 = n! \)
+
+Stirling's Approximation $$ n! \sim \sqrt{2\pi n}
+ \left(\frac{n}{e} \right) ^n  $$
+
+Def. A funtion f : X \( \rightarrow \) Y is a relation between sets X and Y such that every element of X is related to exactly one element of Y. X is the domain. Y is the range (or image of function f). 
+
+Ex.
+
+X 	f 	Y
+a 	\(\longrightarrow\) 	1 	
+b 	\(\longrightarrow\) 	2   
+c 	\(\longrightarrow\) 	3 
+
+f(a) = 1
+f(b) = 2
+f(c) = 3
+
+There is exactly one arrow mapping from each element of X to Y. 
+
+Def. f : X \( \rightarrow \) Y is surjective if every element of Y is mapped at least once.
+
+Def. f : X \( \rightarrow \) Y is injective if every element of Y is mapped at most once. 
+
+Def. f : X \( \rightarrow \) Y is bijective iff surjective and injective.
+
+Ex. Let (\(a_1, a_2,...,a_n\)) be a permutation of S = {\(a_1, a_2,...,a_n\)}. Define \( \pi (a_i) = i \), or in other words, \( a \in S \) is mapped to \(i\) iff \(a\) is in the \(i\)th term in the permutation.
+
+Mapping Rule
+1. f : X \( \rightarrow \) Y surjective \( \Rightarrow \) |X| \( \geq \)|Y|
+2. f : X \( \rightarrow \) Y injective \( \Rightarrow \) |X| \( \leq \)|Y|
+3. f : X \( \rightarrow \) Y bijective \( \Rightarrow \) |X| = |Y| (bijective rule)
+
+Ex. X = all ways to select 12 donuts from 5 varieties.
+
+{00(Chocolate) | (Lemon) | 00000(Sugar) | 00(Glazed) | 00(Plain)} \(\in\) X 
+
+To represent the configuration, the above can be mapped to a 0 and 1 sequence: 001100000100100. This mapping is bijective.
+
+Let Y = set of all 16 bit sequences with exactly four 1s. By bijection rule, |X| = |Y|. 
+
+Ex. Bijection from subsets of X = {1...n} to n-bit sequences. 
+
+$$ S \rightarrow (b_1, b_2,...,b_n) \: via \:
+
+b_i = \left\{
+  \begin{array}{lr}
+    1 \: \mathrm{if} \: i \in S \\
+    0 \: \mathrm{if} \: i \notin S 
+  \end{array}
+\right. $$
+
+How many n-bit sequences are there? \( 2^n \). This is equal to the number of subsets an n-element sent.
+
+Generalized Pigeon Hole Principle
+
+If |X| > k \( \times \)|Y|, then \( \forall_{f: \mathrm{X} \rightarrow \mathrm{Y}} \exists_{k+1} \) different elements of X mapped to the same element in Y.
+
+If k = 1, then this is the pigeon hole principle. If there are more than n pigeons (X) and they fly into n holes (Y), then at least two pigeons will fly into the same hole.
+
+Ex. Boston has 500,000 non-bald people (set X). Claim: \( \exists_{3 \mathrm{people}} \) such that they have the same number of hairs on their head (set Y). Assumption: The number of hairs on a head is at most 200,000. |X| = 500,000 and |Y| = 200,000. So, |X| > 2|Y|. By the generalized pigeon hole principle |X|, k = 2, and so k + 1 = 3. QED.
+
+This is a non-constructive proof, that is, there isn't an particular example.
+
+Ex. Pick 10 arbitrary double digit numbers. 21, 71, 14, 31, 25, 60, 92, 80, 29, 91. There are two subsets, such that the sum of the elements of one set is equal to the sum of the elements of the other.
+
+X = collection of subsets of numbers. |X| = \( 2^{10} \)= 1024. |Y| = {0,1,...,990} = set of all possible sums. So |X| > |Y| and by the pigeon hole principle, two subsets map to the same sum. AMAZING!
+
+Def. A "k-to-1" function f:x \( \rightarrow \) maps exactly k elements of X to every element of Y.
+
+Division Rule. If f is k-to-1, then |X| = k|Y|. This generalizes the bijection rule. Bijection iff 1-to-1. 
+
+Generalized Product Rule. Let S be a set of length k sequences. If there are \(n\) possible first entries, then there are \( n_2 \) possible entries for each 1st entry, and \( n_3 \) entries for each combination of 1st and 2nd entries..., then |S| = \( n_1 \times n_2 \times n_2 \times ... \times n_k \)
+
+Ex. A defective dollar bill is one that has digits that appear more than once from the 8-bit serial number.
+
+$$ \mathrm{fraction \: of \: nondefective \: bills} = \frac{ |\{ \mathrm{serial \: numbers \: with \: all \: digits \: different} \} | }{ |\{ \mathrm{serial \: numbers} \}| } = \frac{x}{y} $$
+
+y = \( 10^8 \) 
+x = \( 10 \times 9 \times 8 \times 7 \times 6 \times 5 \times 4 \times 3 = \frac{10!}{2!} = 1814400 \)
+
+$$ \frac{1,814,400}{100,000,000} = 1.8144\% $$
+
+Thus, almost all dollars are defective, that is, a seral number digit occurs more than once.
+
+Def. Product Rule. If \( P_1, P_2,..., P_n \) are sets, then: 
+
+$$ |P_1 \times P_2 \times ... \times P_n| = |P_1| \times |P_2| \times ... \times |P_n| $$
+
+Def. Sum Rule. If \( A_1, A_2,..., A_n \) are disjoint sets, then:
+
+$$ |A_1 \cup A_2 \: \cup ... \cup \: A_n| = |A_1| + |A_2| + ... + |A_n| $$
+
+Ex. Passwords have 6 to 8 symbols. The first symbol must be a letter and it may be either uppercase or lowercase. The other symbols may be letters (uppercase or lowercase) or digits.
+
+\( F = {a,b,...,z,A,B,...,Z}, \mathrm{thus} |F| = 52 \)
+\( S = {a,b,...,z,A,B,...,Z,0,1,...,9}, \mathrm{thus} |S| = 62 \)
+
+Consider a password with six symbols: \(F \times S \times S \times S \times S \times S\), or rather, ( \( F \times S^5 \). So the set of all possible passwords:
+
+$$ |(F \times S^5) \cup (F \times S^6) \cup (F \times S^7)| $$ 
+
+By the sum rule, the above line is equal to:
+
+$$ |F \times S^5| + |F \times S^6| + |F \times S^7| $$
+
+And by application of the product rule:
+
+$$ |F| \times |S^5| + |F| \times |S^6| + |F| \times |S^7| $$
+$$ 52 \times 62^5 + 52 \times 62^6 + 52 \times 62^7 $$
+$$ \approx 1.8 \times 10^{14} $$
+
+Counting Rules Part II
+
+Inclusion/Exclusion
+Bookkeeper Rule
+  -Subset Rule
+  -Binomial Theorem
+
+Combinatorial Proofs
+
+<%= image_tag("Venn.svg", id: "venn") %>
+
+Inclusion/Exclusion
+
+Using the Sum Rule:
+
+|M| = |M\E| + |M \( \cap \) E|
+|E| = |E\M| + |M \( \cap \) E|
+|M \( \cup \) E| = |M\E| + |M \( \cap \) E| + |E\M|
+
+Notice that |M| + |E| counts M \( \cap \) E twice! This needs to be excluded: 
+
+|M \( \cup \) E| = |M| + |E| - |M \( \cap \) E| 
+
+
+Now suppose there are three sets. Then |M| + |E| + |S|. But then the sets are counted multiple times:
+
+<%= image_tag("Venn2.svg", id: "venn2") %>
+
+To compute the correct cardinality of all sets:
+
+|M \( \cup \) E \( \cup \) S| = |M| + |E| + |S| 
+- |M \( \cap \) E| - |M \( \cap \) S| - |E \( \cap \) S| 
++ |M \( \cap \) E \( \cap \) S|
+
+This can be generalized:
+
+$$ |A_1 \cup A_2 \: \cup \: ... \cup \: A_n| \: \mathrm{or} \: \left| \bigcup_{i=1}^{n}A_i \right| = \sum_{i=1}^{n}|A_i| $$
+$$ - \sum_{1 \leq 1_i < i_2 \leq n}|A_{i_1} \cap A_{i_2}| $$
+$$ + \sum_{1 \leq 1_i < i_2 < i_3 \leq n}|A_{i_1} \cap A_{i_2} \cap A_{i_3}| $$
+$$ ... + (-1)^{n+1} |A_1 \cap ... \cap A_n| $$
+
+The last addition will depend on whether the number is even or odd. The sum of the k-way intersection gets the sign(-1)\(^k-1\).
+
+N choose K. \( \binom{n}{k} \) ::= the number of k-element susbsets of an n-element set.
+
+Def. Subset Rule. The number of k-element subsets of an element set is 
+
+$$ \binom{n}{k} = \frac{n!}{k!(n-k)!} $$
+
+Generally, the n-bit sequences corresponding to a k-element subset will have exactly k ones. So by the bijection rule, the number of n-bit sequences with exactly k ones is \( \binom{n}{k} \)
+
+Choosing a k-element subset of an n-element set is the same as splitting the set into a pair of subsets: the first subset of size k and the second subset consisting of the remaining n - k elements. So the Subset Rule can be understood as a rule for counting the number of such splits into pairs of subsets.
+
+To generalize this to splits into more than two subsets, let \(A\) be an \(n\)-element set and \(k_1,k_2,....,k_m \) be nonnegative integers whose sum is \(n\). A \((k_1,k_2,....,k_m)\)-split of \(A\) is a sequence \(A_1,A_2,....,A_m \) where the \(A_i\) are disjoint subsets of \(A\) and \(|A_i|\) = \(k_i\) for \(i\) = 1,...,\(m\). 
+
+Def. Subset Split Rule. The number of \((k_1,k_2,....,k_m)\)-splits of an \(n\)-element set is 
+
+$$ \binom{n}{k_1,...,k_m} ::= \frac{n!}{k_1!k_2! ... k_m!} $$
+
+Def. Bookkeeper Rule. Let \(l_1,...,l_m\) be distinct elements. The number of sequences with \(k_1\) occurences of \(l_1\), and \(k_2\) occurences of \(l_2\), ..., and \(k_m\) occurences of \(l_m\) is
+
+$$ \frac{(k_1 + k_2 + ... + k_m)!}{k_1!k_2! ... k_m!} $$
+
+Ex. If a 20 mile walk consists of 5 northward miles, 5 southward miles, 5 westward miles, and 5 eastward miles, how many different walks are possible? 
+
+There is a bijection between such walks and sequences with 5 N's, 5 S's, 5 E's, 5 W's. By application of the Bookkeeper rule, the number of such sequences is \( \frac{20!}{5!^4}\).
+
+Def. Binomial Theorem. For all \( n \in \textbf{N} \: \mathrm{and} \: a, b \in \textbf{R} \):
+
+$$ (a + b)^n = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k} $$
+
+
 	</div>
+
+
+
+
+	<div id="Bar4_Notes">
+
+Probability and Conditional Probability
+
+Def. The sample space for an experiment is the set of all possible outcomes.
+
+Def. An outcome (or sample point) consists of all the information about the experiment after it has been performed, including the values of all random choices. 
+
+Def. An outcome of the Monty Hall Game when the contestant switches consists of: 
+
+1) The box with the prize 
+2) The box chosen first 
+3) The box that is revealed.
+
+Ex. Sample point (2,1,3) is the outcome where 
+The prize is in box 2
+The player picks box 1
+Box 3 is revealed.
+
+(1,2,1) or (2,1,1), among others, aren't sample points.
+
+The sample space can be constructed with the tree method (not shown here). 
+
+(1,1,2) Loss
+(1,1,3) Loss
+(1,2,3) Win
+(1,3,2) Win
+(2,1,3) Win
+(2,2,1) Loss
+(2,2,3) Loss
+(2,3,1) Win
+(3,1,2) Win
+(3,2,1) Win
+(3,3,1) Loss
+(3,3,2) Loss
+
+But something is missing. The probability space needs to be constructed.
+
+Def. A probability space consists of a sample space (all outcomes) and a probability function \( "Pr" : S \rightarrow \mathbf{R} \) (maps the sample space to the real numbers) such that
+
+1) \( \forall w \in S, 0 \leq Pr(w) \leq 1 \) (for every outcome, the probability is between 0 and 1)
+2) \( \sum_{\substack{w \in S}} Pr(w) = 1 \) (the sum of all outcomes is 1)
+
+A natural interpretation of the probability function: \( \forall w \in S, Pr(w) \) = probability that w will be the outcome.
+
+Assumptions for Monty Hall Problem
+1) The prize is in each box with probability 1/3.
+2) No matter where the prize is, the player picks each box with probability 1/3.
+3) No matter where the prize is, if Carol (the person revealing the boxes) has a choice, she picks each box with a probability of 1/2. This doesn't make a difference if there are 3 boxes, but it does if there are more than 3.
+
+The probability of a sample point is the product of the probabilities on the path leading to the sample point.
+
+Def. An event is a subset of the sample space (outcomes).
+
+Def. The probability that an event E occurs is $$ \sum_{\substack{w \in E}} Pr(w) $$
+
+Ex. E\(_l\) = the event the player loses with the "switch" strategy. So, Pr(E\(_l\)) = \( 6\frac{1}{18} = \frac{1}{3} \)
+
+Another game.
+
+You have three six-sided die. Die A has a 2, 6, 7. Die B has 1, 5, 9. Die C has 3, 4, 8.
+
+The Pr(A = 3)
+
+Def. A sample space is uniform if every sample point has the same probability ( Pr( \( \mathit{w} ) \) = \( \frac{1}{|\mathrm{S}|} \) )
+	
+
+
+
+Conditional Probability
+
+Pr(A|B) = Probability of A given B (A and B are events)
+
+ex. B = event that Carol places the prize in Box 1. A = event that contestant chooses Box 1. Assumed Pr(A|B) = 1/3.
+
+Def. If Pr(B) \( \neq \) 0, then $$ Pr(A|B) = \frac{Pr(A \wedge B)}{Pr(B)}$$
+
+What is Pr(B|B)? Pr(B|B) =  \( \frac{Pr(B \wedge B)}{Pr(B)} \) = 1
+
+Product Rule $$ Pr(A \wedge B) = Pr(B)Pr(A|B) $$
+
+General Product Rule $$ Pr(A_1 \wedge A_2 \wedge ... \wedge A_n) = $$
+$$ Pr(A_1)Pr(A_2|A_1)Pr(A_3|A_1 \wedge A_2) ... Pr(A_n|A_1 \wedge A_2\wedge ... \wedge A_{n-1}) $$
+
+Example. In a best 2 of 3 series, the probability of winning the first game is 1/2. The probability of winning a game following a win is 2/3. The probability of winning after a loss is 1/3. What is the probability of winning the series given that you've won the first game?
+
+<%= image_tag("treebranch.svg", id:"treebranch") %>
+
+There are six sample points:
+
+WW 
+WLW 
+WLL 
+LWW 
+LWL 
+LL 
+
+Using the product rule, \( Pr(WW) = Pr(W1)Pr(W2 | W1) = \frac{1}{3} \)
+
+Using the general product rule,
+\( Pr(WLW) = Pr(W1)Pr(L2|W1)(Pr(W3|W1 \wedge L2) = \frac{1}{18} \)
+
+Note that this is just the product of the path of edges. Below are the probabilities for each sample point.
+
+Pr(WW) = 1/3
+Pr(WLW) = 1/18
+Pr(WLL) = 1/9
+Pr(LWW) = 1/9
+Pr(LWL) = 1/18
+Pr(LL) = 1/3
+
+To compute the probability of winning the series given that Game 1 was won:
+
+A = event win series
+B = event win Game 1
+
+A occurs for sample points WW, WLW and LWW. B occurs for sample points WW, WLW and WLL. A and B occurs for sample points WW and WLW.
+
+\( Pr(A|B) = \frac{Pr(A \wedge B)}{Pr(B)} = \frac{ \frac{1}{3} + \frac{1}{18}}{\frac{1}{3} + \frac{1}{18} + \frac{1}{9}} = \frac{7}{9} \)
+
+A Posteriori Probabilities
+
+Pr(B|A) such that B precedes A in time = \( \frac{Pr(B \wedge A)}{Pr(A)} \). In the example above, that is \( \frac{\frac{1}{3} + \frac{1}{18}}{\frac{9}{18}} = \frac{7}{9} \).
+
+Medical Test Example
+
+10% of population has disease. If you have disease, there is a 10% chance that test is negative (false negative). If you don't have the disease, there is a 30% chance that test is positive (false positive). What is the probability of a random person who tests positive has the disease?
+
+A = event person has disease
+B = event person tests positive
+
+\( Pr(A|B) = \frac{Pr(A \wedge B)}{Pr(B)} = \frac{.09}{.36} = .25 \)
+
+	</div>
+
+	<div id="Bar5_Notes">
+
+Independence
+
+Def. An event A is independent of an event B if Pr(A|B)=Pr(A) or if Pr(B) = 0.
+
+Example. Flip 2 fair "independent" coins. Let B be the event that the first coin is heads. Pr(B) = 1/2. Let A be the event that the second coin is tails. Pr(A) = 1/2. Thus, Pr(A|B) = 1/2 = Pr(A).
+
+If you flip two coins, it isn't always the case that they're independent. A contrived example would be if you glued both coins together. In practice, we often assume independence. But this can lead to problems. 
+
+Theorem. Product Rule for Independent Events
+
+If A is independent of B, then Pr(A \( \wedge \) B) = Pr(A)Pr(B).
+
+Proof. Case 1: Pr(B) = 0. Then Pr(A \( \wedge \) B) = Pr(A)Pr(B).
+Case 2: Pr(B) > 0. Then, Pr(A \( \wedge \) B) = Pr(B)Pr(A|B), and by independence, this is equal to Pr(A). \( \square \)
+
+Many texts will define independence by this product rule. And it's equivalent.
+
+Theorem. Symmetry of Independence.
+
+If A is independent of B, then B is independent of A.
+
+Example. There are 2 fair independent coins.
+
+A = event coins match.
+B = event first coin is H.
+
+Are A and B independent?
+
+Pr(A|B) = Pr(second coin is H) = 1/2.
+
+Pr(A) = Pr(HH) + Pr(TT) = 1/2. 
+
+The Pr(A|B) = Pr(A), which satisfies the definition of independence. So yes, A and B are independent.
+
+However, if there aren't fair coins, they aren't independent.
+
+Pr(H) = p
+Pr(T) = 1-p
+
+Pr(A|B) = p 
+Pr(A) = p\(^2\) + (1 - p)\(^2\)
+
+A and B are independent \(\Leftrightarrow\) Pr(B) = 0 (p=0) or p = 1 - 2p + 2p\(^2\)
+
+\(\Leftrightarrow\) 1 - 3p + 2p\(^2\)
+
+\(\Leftrightarrow\) p = 1/2, 1
+
+Def. Events E\(_1\), E\(_2\), ... E\(_n\) are mutually independent if \( \forall i \in [1,n] \) and \(\forall S \subseteq [1,n] - \{i\} \), either $$ Pr \Bigg[E_i | \bigcap_{j \in S} E_j \Bigg] = Pr[E_i] \ \mathrm{or} \ Pr \Bigg[ \bigcap_{j \in S} E_j \Bigg] = 0 $$
+
+Less formally, no matter which other events are known to occur, the probability 
+
+Equivalent Definition. Product Rule Form.
+
+E\(_1\), E\(_2\), ... E\(_n\) are mutually independent if \( \forall S \subseteq [1,n], \) $$ Pr \Bigg[ \bigcap_{j \in S}E_j \Bigg] = \prod_{j \in S}Pr[E_j] $$
+
+Less formally, if you want to know the probability of a bunch of events occuring, just multiply them out.
+
+So suppose there are three events (n=3). A\(_1\), A\(_2\), A\(_3\) if
+
+Pr(A\(_1\) \(\wedge\) A\(_2\)) = Pr(A\(_1\))Pr(A\(_2\))
+Pr(A\(_1\) \(\wedge\) A\(_3\)) = Pr(A\(_1\))Pr(A\(_3\))
+Pr(A\(_2\) \(\wedge\) A\(_3\)) = Pr(A\(_2\))Pr(A\(_3\))
+Pr(A\(_1\) \(\wedge\) A\(_2\) \(\wedge\) A\(_3\)) = Pr(A\(_1\))Pr(A\(_2\))Pr(A\(_3\))
+
+Def. Events A\(_1\), A\(_2\), ... A\(_n\) are pairwise independent if 
+\( \forall i,j (i \neq j) \), A\(_i\) and A\(_j\) are independent.
+
+All mutual are pairwise, but not all pairwise are mutual.
+
+Add discussion on Birthday Paradox
+
+Add discussion on Hashing Application
+
+Fill in here.
+
+
+
+
+
+
+
+
+
+
+
+Random Variables
+
+
+A random variable R on a probability space is a total function whose domain is the sample space. Notice that "random variable" is a misnomer; random variables are actually functions.
+
+Ex. Toss 3 coins. Then R = number of heads. So R(H,T,H) = 2. 
+
+Ex. M = 1 if all three coins match or 0 otherwise. M(H,H,T) = 0 / M(T,T,T) = 1.
+
+Def. An indicator (or Bernoulli or characteristic) random variable is a random variable with range = {0,1}.
+
+{w|R(w) = x} is the event that R = x.
+
+Def. Pr(R=x) = 
+
+
+
+
+
+
+	</div>
+
+	<div id="Bar6_Notes">
+
+Algorithms Unlocked, p.31
+
+Recursive-Binary-Search(A, p, r, x)
+
+Inputs and Outputs: Input A is the array and x is the value being searched for. The inputs p and r delineate the subarray A[p..r] under consideration.
+
+1. If p > r, then return Not-Found.
+2. Otherwise (p <= r), do the following:
+	A. Set q to (p + r)/2.
+	B. If A[q] = x, then return q.
+	C. Otherwise (A[q] != x), if A[q] > x, then return
+	   Recursive-Binary-Search(A, p, q - 1, x).
+	D. Otherwise (A[q] < x), return
+	   Recursive-Binary-Search(A, q + 1, r, x).
+
+		<pre><code class="ruby">
+def recursive_binary_search(array, key, p = 0, r = array.length - 1)
+	if p > r || key > array[array.length-1]
+		return "key not found"
+	else
+		q = (p + r)/2
+		if array[q] == key 
+			return q
+		elsif array[q] > key
+			return recursive_binary_search(array, key, p, q - 1)
+		elsif array[q] < key
+			return recursive_binary_search(array, key, q + 1, r)
+		end
+	end
+end
+		</code></pre>
+
+	</div>
+
+	<div id="Bar7_Notes">
+
+Insertion Sort
+
+Introduction to Algorithms, p. 18
+
+Insertion_Sort(A)
+	for j = 2 to A.length
+		key = A[j]
+		// Insert A[j] into the sorted sequence A[i..j-1]
+		i = j - 1
+		while i > 0 and A[i] > key
+			A[i + 1] = A[i]
+			i = i - 1
+		A[i + 1] = key
+
+		<pre><code class="ruby">
+
+def insertion_sort_ia(array)
+
+	for j in 1..array.length-1
+		key = array[j]
+		i = j - 1
+		while i >= 0 && array[i] > key
+			array[i + 1] = array[i]
+			i = i - 1
+		end
+		array[i + 1] = key
+	end
+	return array
+end
+		</code></pre>
+
+		<pre><code class="ruby">
+
+def insertion_sort(array)  
+  array.each_with_index do |key,j|  
+    i = j - 1  
+    until i < 0 or array[i] <= key
+      array[i + 1] = array[i]  
+      i -= 1 
+    end  
+    array[i + 1] = key  
+  end 
+  return array 
+end 
+
+		</code></pre>
+
+	</div>
+
+	<div id="Bar8_Notes">
+
+Introduction to Algorithms, p. 31
+Merge(A, p, q, r)
+	n1 = q - p + 1
+	n2 = r - q 
+	let L[1..n1 + 1] and R[1..n2 + 1] be new arrays
+	for i = 1 to n2
+		L[i] = A[p + i - 1]
+	for j = 1 to n2
+		R[j] = A[q + j]
+	L[n1 + 1] = infinity
+	R[n2 + 1] = infinity
+	i = 1
+	j = 1
+	for k = p to r
+		if L[i] <= R[j]
+			A[k] = L[i]
+			i = i + 1
+		else A[k] = R[j]
+			j = j + 1
+
+Introduction to Algorithms, p. 34
+Merge_Sort(A, p, r)
+	if p < r
+			q = floor(p + r)/2
+			Merge_Sort(A, p, q)
+			Merge_Sort(A, q + 1, r)
+			Merge(A, p, q, r)
+
+=end
+
+def merge_sort(array, p, r)
+	if p < r 
+		q = (p + r)/2
+		merge_sort(array, p, q)
+		merge_sort(array, q + 1, r)
+		merge(array, p, q, r)
+	end
+end
+
+
+<pre><code class="ruby">
+
+def merge(array, p, q, r)
+	n1 = q - p + 1 #compute the length n1 of the subarray array[p..q]
+	n2 = r - q #compute the length n2 of the subarray  array[q + 1..r]
+	left = [], right = []
+	for i in 0..n2kkK
+		left[i] = array[p + i - 1]
+	end
+	for j in 0..n2
+		right[j] = array[q + j]
+	end
+	left[n1 + 1] = 1000 #sentinel
+	right[n2 + 1] = 1000 #sentinel
+	i = 0
+	j = 0
+	for k in p..r
+		puts "hello"
+		if left[i] <= right[j]
+			i = i + 1
+		elsif array[k] == right[j]
+			j = j + 1
+		end
+	end
+end
+
+</code></pre>
+
+puts merge_sort([30, 10, 50, 20, 40], 0, 5)
+
+
+=begin
+
+def merge(left, right)  
+  sorted = []  
+  until left.empty? or right.empty?  
+    if left.first <= right.first  
+      sorted << left.shift  
+    else  
+      sorted << right.shift  
+    end  
+  end  
+  sorted.concat(left).concat(right)  
+end
+
+def mergesort(list)  
+  return list if list.size <= 1  
+  mid = list.size / 2  
+  left  = list[0, mid]  
+  right = list[mid, list.size]  
+  merge(mergesort(left), mergesort(right))  
+end  
+  
+=end
+
+	</div>
+
+	<div id="Bar9_Notes">
+
+
+Introduction to Algorithms, p. 171
+
+Quicksort(A, p, r)
+	if p < r
+		q = Partition(A, p, r)
+		Quicksort(A, p, q - 1)
+		Quicksort(A, q + 1, r)
+
+Partition(A, p, r)
+	x = A[r]
+	i = p - 1
+	for j = p to r -1
+		if A[j] <= x
+			i = i + 1
+			exchange A[i] with A[j]
+	exchange A[i + 1] with A[r]
+	return i + 1
+
+<pre><code class="ruby">
+
+def quicksort(list)  
+  return list if list.size <= 1  
+  pivot = list.sample  
+  left, right = list.partition { |e| e < pivot }  
+  quicksort(left) + quicksort(right)  
+end 
+
+</code></pre>
+
+	</div>
+
+	<div id="Bar10_Notes">
+	</div>
+
 
 </div>
 
@@ -144,6 +928,19 @@
 
 
 
+
+
+<div id="About">
+
+	<div class="Gotham">
+		What do you wonder about?
+	</div>
+
+	<div class="Archer">
+		Viral literally pour-over readymade chambray. McSweeney's tousled drinking vinegar, messenger bag asymmetrical food truck ugh you probably haven't heard of them fap cronut wayfarers bitters. IPhone Vice swag paleo, skateboard direct trade roof party salvia whatever hoodie literally. Street art Banksy narwhal High Life, tattooed chillwave ugh pop-up cornhole fashion axe McSweeney's crucifix fixie asymmetrical iPhone. Literally art party actually, listicle food truck squid skateboard small batch beard jean shorts. Narwhal cold-pressed Carles four loko, chillwave Neutra bitters iPhone PBR biodiesel. High Life stumptown farm-to-table, vegan taxidermy skateboard scenester Vice try-hard tilde post-ironic tote bag deep v health goth yr.
+	</div>
+
+</div>
 
 
 
