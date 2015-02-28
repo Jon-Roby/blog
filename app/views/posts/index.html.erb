@@ -13,18 +13,16 @@
 	<li id="Bar10"><%= image_tag("bar10.jpg") %></li>
 </ul>
 
-
-
 <%# The children of this div (#BarX_Notes) are hidden until a user clicks on the corresponding #BarX listed above. Once clicked, the notes display in a light box. Continue to look%>
 <div id="Bar_Notes_Wrapper">
 
-	<div id="Bar1_Notes">
+	<div id="Bar1_Notes" class="Bar_Notes">
 
-Chapter 1, Chapter 2, and Chapter 3 Propositions, Proofs, and Mathematical Induction
+Notes - MIT Open Courseware: Propositions (Chapter 1) and Patterns of Proof (Chapter 2)
 
-Definition. A proposition is a statement that is either true or false. 2 + 3 = 5 
+Def. A proposition is a statement that is either true or false. 2 + 3 = 5 
 
-P 	Not(P)
+P 	\( \neg \)P
 T	F
 F	T
 
@@ -34,43 +32,43 @@ T	F	F
 F	T	F
 F	F	F
 
-P 	Q	P or Q
+P 	Q	P \( \vee \) Q
 T	T	T
 T	F	T
 F	T	T
 F	F	F
 
-P 	Q	P xor Q
+P 	Q	P \( \veebar \) Q
 T	T	F
 T	F	T	
 F	T	T
 F	F	F
 
-P 	Q	P implies Q
+P 	Q	P \( \to \) Q
 T	T	T
 T	F	F	
 F	T	T
 F	F	T
 
-P 	Q	P iff Q
+P 	Q	P \( \iff \) Q
 T	T	T
 T	F	F	
 F	T	F
 F	F	T
 
-P	Q	P implies Q	Not(Q) implies Not(P)
-T	T	T		T
-T	F	F		F
-F	T	T		T
-F	F	T		T
+P	Q	P \( \to \) Q		\( \neg \)Q \( \to \) \( \neg \)P
+T	T	T			T
+T	F	F			F
+F	T	T			T
+F	F	T			T
 
-Consider this proposition: for every nonnegative integer, n, the value of n^2 + n + 41 is prime. It is isn’t immediately clear whether this proposition is false. The proposition as it turns out, is false.
+Consider this proposition: for every nonnegative integer, n, the value of \( n^2 + n + 41 \) is prime. It is isn’t immediately clear whether this proposition is false. The proposition as it turns out, is false.
 
-For all n element Natural. p(n) is prime.
+\( \forall n \in \mathbf{N}. p(n) \) is prime.
 
-a^4 + b^4 + c^4 = d^4 has no solution when a,b,c,d are positive integers.
+\( a^4 + b^4 + c^4 = d^4 \) has no solution when a,b,c,d are positive integers.
 
-This can be written: (pg. 9)
+This can be written: \( \forall a,b,c,d \in \mathbf{Z^+}. a^4 + b^4 + c^4 \neq d^4 \).
 
 A predicate is a proposition whose truth depends on the value of one or more variables. For example, “n is a perfect square” is a predicate whose truth value depends on the value of n. Like other propositions, predicates are often named with a letter. Furthermore, a function-like notation is used to denote a predicate supplied with specific variable values. For example, we might name our earlier predicate P:
 
@@ -80,32 +78,21 @@ So P(4) is true and P(5) is false.
 
 This notation for predicates is confusingly similar to ordinary function notation. If P is a predicate, then P(n) is either true or false, depending on the value of n. On the other hand, if p is an ordinary function, like n2+n, then p(n) is a numerical quantity. Don’t confuse the two!
 
-There are a couple of assertions commonly made about a predicate: that it is sometimes true and that it is always true. The predicate “x2 >= 0” is always true and “5x2-7=0” is sometimes true.
+There are a couple of assertions commonly made about a predicate: that it is sometimes true and that it is always true. The predicate “\( x^2 \geq 0 \)” is always true and “ \( 5x^2-7=0 \) ” is sometimes true.
 
-Write out notation. The universal quantifier symbol A is read “for all”. The existential quantifier is read “there exists”.
+The universal quantifier symbol is read “for all”. The existential quantifier is read “there exists”.
 
 Swapping the order of different kinds of quantifiers usually changes the meaning. Consider the statement “Every American has a dream”. Let A be the set of Americans, let D be the set of dreams, and define the predicate H(a,d) to be “American a has a dream d”. So the sentence could mean that there is a single dream that every American shares:
 
-Ed element D. Alla element A. H(a,d)
+\( \exists d \in \mathbf{D}. \forall a \in \mathbf{A}. H(a,d) \)
 
 Or it could mean that every American has a personal dream:
 
-Alla element A. Ed element D. H(a,d).
+\( \forall a \in \mathbf{A}. \exists d \in \mathbf{D}. H(a,d). \)
 
-NOT ( forall x. P(x)) is equivalent to exists x. Not(P(x)).
+A general principle is that moving a “not” across a quantifier changes the kind of quantifier.
 
-The general principle is that moving a “not” across a quantifier changes the kind of quantifier.
-
-
-
-
-
-
-
-Chapter 2
-
-
-
+\( \neg ( \forall x. P(x)) \) is equivalent to \( \exists x. \neg(P(x)). \)
 
 Chapter 2 Patterns of Proof
 
@@ -158,12 +145,12 @@ Proof. We use proof by contradiction. Suppose the claim is false; that is, sqrt2
 
 Squaring both sides gives 2 = n2 / d2 and so 2d2 = n2. This implies that n is a multiple of 2. Therefore n2 must be a multiple of 4. But since 2d2 = n2, we know 2d2 is a multiple of 4 and so d2 is a multiple of 2. This implies that d is a multiple of 2. So the numerator and denominator have 2 as a common factor, which contradicts the fact that n/d is in lowest terms. So rt2 must be irrational. QED.
 
-empty set			none
+empty set				none
 nonnegative integers		{0,1,2,3,…}
-integers			{…,-3,-2,-1,0,1,2,3,…}
-rational numbers		1/2, 16
+integers				{…,-3,-2,-1,0,1,2,3,…}
+rational numbers			1/2, 16
 real numbers			pi, e, -9, rt., etc.
-complex numbers		i, 19/2, rt. - 2i, etc.
+complex numbers			i, 19/2, rt. - 2i, etc.
 
 A superscript “+” restricts a set to its positive elements. For example R+ denotes the set of positive real numbers. Similarly, R- denotes the set of negative reals.
 
@@ -190,15 +177,11 @@ An important use of predicates is in set builder notation. Example:
 
 A::= {n element Natural | n is prime and n = 4k + 1 for some integer K }
 
-
-
 	</div>
 
+	<div id="Bar2_Notes" class="Bar_Notes">
 
-
-	<div id="Bar2_Notes">
-
-Big O Notation and Recurrences - Chapter 9 and 10
+Notes - MIT Open Courseware: Induction (Chapter 3) 
 
 Tower of Hanoi Problem. Three posts and 64 disks. The only permitted action is removing the top disk from one post and dropping it onto another post. A larger disk can never lie above a smaller disk on any post.
 
@@ -242,11 +225,9 @@ The pattern that seems to be emerging is
 
 	</div>
 
+	<div id="Bar3_Notes" class="Bar_Notes">
 
-
-	<div id="Bar3_Notes">
-
-Sets, Functions and Cardinality
+Notes - MIT Open Courseware: Cardinality Rules (Chapter 11) 
 		<%# Indenting here, will mean it indents in the final format. %>
 Def. A set is an unordered collection of distinct elements. 
 
@@ -268,7 +249,6 @@ Stirling's Approximation $$ n! \sim \sqrt{2\pi n}
  \left(\frac{n}{e} \right) ^n  $$
 
 Def. A funtion f : X \( \rightarrow \) Y is a relation between sets X and Y such that every element of X is related to exactly one element of Y. X is the domain. Y is the range (or image of function f). 
-
 Ex.
 
 X 	f 	Y
@@ -445,15 +425,11 @@ Def. Binomial Theorem. For all \( n \in \textbf{N} \: \mathrm{and} \: a, b \in \
 
 $$ (a + b)^n = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k} $$
 
-
 	</div>
 
+	<div id="Bar4_Notes" class="Bar_Notes">
 
-
-
-	<div id="Bar4_Notes">
-
-Probability and Conditional Probability
+Notes - MIT Open Courseware: Events and Probability Spaces (Chapter 14) and Conditional Probability (Chapter 15)
 
 Def. The sample space for an experiment is the set of all possible outcomes.
 
@@ -516,9 +492,6 @@ You have three six-sided die. Die A has a 2, 6, 7. Die B has 1, 5, 9. Die C has 
 The Pr(A = 3)
 
 Def. A sample space is uniform if every sample point has the same probability ( Pr( \( \mathit{w} ) \) = \( \frac{1}{|\mathrm{S}|} \) )
-	
-
-
 
 Conditional Probability
 
@@ -586,9 +559,9 @@ B = event person tests positive
 
 	</div>
 
-	<div id="Bar5_Notes">
+	<div id="Bar5_Notes" class="Bar_Notes">
 
-Independence
+Notes - MIT Open Courseware: Independence (Chapter 16) 
 
 Def. An event A is independent of an event B if Pr(A|B)=Pr(A) or if Pr(B) = 0.
 
@@ -666,14 +639,6 @@ Fill in here.
 
 
 
-
-
-
-
-
-
-
-
 Random Variables
 
 
@@ -687,18 +652,11 @@ Def. An indicator (or Bernoulli or characteristic) random variable is a random v
 
 {w|R(w) = x} is the event that R = x.
 
-Def. Pr(R=x) = 
-
-
-
-
-
-
 	</div>
 
 	<div id="Bar6_Notes">
 
-Algorithms Unlocked, p.31
+Binary Search (Algorithms Unlocked, p.31)
 
 Recursive-Binary-Search(A, p, r, x)
 
@@ -734,9 +692,7 @@ end
 
 	<div id="Bar7_Notes">
 
-Insertion Sort
-
-Introduction to Algorithms, p. 18
+Insertion Sort (Introduction to Algorithms, p. 18)		
 
 Insertion_Sort(A)
 	for j = 2 to A.length
@@ -785,7 +741,8 @@ end
 
 	<div id="Bar8_Notes">
 
-Introduction to Algorithms, p. 31
+Merge Sort (Introduction to Algorithms, p. 31)	
+
 Merge(A, p, q, r)
 	n1 = q - p + 1
 	n2 = r - q 
@@ -805,33 +762,13 @@ Merge(A, p, q, r)
 		else A[k] = R[j]
 			j = j + 1
 
-Introduction to Algorithms, p. 34
-Merge_Sort(A, p, r)
-	if p < r
-			q = floor(p + r)/2
-			Merge_Sort(A, p, q)
-			Merge_Sort(A, q + 1, r)
-			Merge(A, p, q, r)
-
-=end
-
-def merge_sort(array, p, r)
-	if p < r 
-		q = (p + r)/2
-		merge_sort(array, p, q)
-		merge_sort(array, q + 1, r)
-		merge(array, p, q, r)
-	end
-end
-
-
 <pre><code class="ruby">
 
 def merge(array, p, q, r)
 	n1 = q - p + 1 #compute the length n1 of the subarray array[p..q]
 	n2 = r - q #compute the length n2 of the subarray  array[q + 1..r]
 	left = [], right = []
-	for i in 0..n2kkK
+	for i in 0..n2
 		left[i] = array[p + i - 1]
 	end
 	for j in 0..n2
@@ -852,6 +789,26 @@ def merge(array, p, q, r)
 end
 
 </code></pre>
+
+Introduction to Algorithms, p. 34
+Merge_Sort(A, p, r)
+	if p < r
+			q = floor(p + r)/2
+			Merge_Sort(A, p, q)
+			Merge_Sort(A, q + 1, r)
+			Merge(A, p, q, r)
+
+=end
+
+def merge_sort(array, p, r)
+	if p < r 
+		q = (p + r)/2
+		merge_sort(array, p, q)
+		merge_sort(array, q + 1, r)
+		merge(array, p, q, r)
+	end
+end
+
 
 puts merge_sort([30, 10, 50, 20, 40], 0, 5)
 
@@ -884,8 +841,7 @@ end
 
 	<div id="Bar9_Notes">
 
-
-Introduction to Algorithms, p. 171
+Quick Sort (Introduction to Algorithms, p. 171)	
 
 Quicksort(A, p, r)
 	if p < r
@@ -919,14 +875,7 @@ end
 	<div id="Bar10_Notes">
 	</div>
 
-
 </div>
-
-
-
-
-
-
 
 
 

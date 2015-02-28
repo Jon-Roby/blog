@@ -16,10 +16,6 @@
 //= require jquery.turbolinks
 //= require_tree .
 
-
-
-
-
 //Lightbox with notes appears when bar in index.html.erb is clicked.
 $(document).ready(function(){
 
@@ -27,8 +23,13 @@ $(document).ready(function(){
 	  "HTML-CSS": {
 	    availableFonts: [],
 	    preferredFont: null,
-	    webFont: "Latin-Modern"
-	    
+	    webFont: "Latin-Modern",
+	    styles: {
+	    	".Bar_Notes": {
+	    			padding: "7px",
+	    			"font-size": "100%"
+	    	},
+	    }
 	  }
 	});
 
@@ -47,7 +48,6 @@ $(document).ready(function(){
 			.mouseleave(function(){
 				$overlay.hide();
 			});
-
 
 	//Lightbox with notes appears when accompanying bar with same number is clicked.
 	$("#Bar_Image_Wrapper li").click(function(){
@@ -69,7 +69,6 @@ $(document).ready(function(){
 		}); 
 
 	});
-
 
 	//Hides photo bars and shows main picture.
 	$("#Notes").click(function(){
