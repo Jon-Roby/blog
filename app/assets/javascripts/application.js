@@ -86,7 +86,7 @@ $(document).ready(function(){
 	$("#Notes").click(function(){
 		$('#Photo #homeimage').fadeOut(1000, function(){
 			$('#Bar_Image_Wrapper li').slideDown(1000);
-			$('#About').hide();
+			$('#About_Questions').hide();
 		});
 	});
 
@@ -94,7 +94,7 @@ $(document).ready(function(){
 	$("#Photo #homeimage").click(function(){
 		$('#Photo #homeimage').fadeOut(1000, function(){
 			$('#Bar_Image_Wrapper li').slideDown(1000);
-			$('#About').hide();
+			$('#About_Questions').hide();
 		});
 	});
 
@@ -102,7 +102,7 @@ $(document).ready(function(){
 	$("#Jon").click(function(){
 		$('#Bar_Image_Wrapper li').slideUp(1000, function(){
 			$('#Photo #homeimage').fadeIn(1000);
-			$('#About').hide();
+			$('#About_Questions').hide();
 		});
 	});
 
@@ -110,15 +110,15 @@ $(document).ready(function(){
 	$("#Roby").click(function(){
 		$('#Bar_Image_Wrapper li').slideUp(1000, function(){
 			$('#Photo #homeimage').fadeIn(1000);
-			$('#About').hide();
+			$('#About_Questions').hide();
 		});
 	});
 
 	//Shows the navigation.
-	$("#AboutNav").click(function(){
+	$("#About").click(function(){
 		$('#Bar_Image_Wrapper li').slideUp(1000, function(){
 			$('#Photo #homeimage').fadeOut(1000);
-			$('#About').fadeIn(1000);
+			$('#About_Questions').fadeIn(2000);
 		});
 	});
 

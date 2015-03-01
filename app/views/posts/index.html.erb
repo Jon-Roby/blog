@@ -870,10 +870,10 @@ def merge(array, p, q, r)
   (p..r).each do |k|
     if left[i] <= right[j]
       array[k] = left[i]
-      i = i + 1
+      i += 1
     else 
       array[k] = right[j]
-      j = j + 1
+      j += 1
     end
   end
 end
@@ -909,8 +909,9 @@ Partition(A, p, r)
   exchange A[i + 1] with A[r]
   return i + 1
 
-<pre><code class="ruby">
+My implementation into idiomatic Ruby:
 
+<pre><code class="ruby">
 def quicksort(array, p, r)
   if p < r 
     q = partition(array, p, r)
@@ -924,7 +925,7 @@ def partition(array, p, r)
   i = p - 1
   (p..r-1).each do |j|
     if array[j] <= x
-      i = i + 1
+      i += 1
       swap = array[i]
       array[i] = array[j]
       array[j] = swap
@@ -944,7 +945,7 @@ end
 
 
 
-<div id="About">
+<div id="About_Questions">
 
 	<div class="Gotham">
 		What do you wonder about?
