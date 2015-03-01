@@ -16,6 +16,12 @@
 //= require jquery.turbolinks
 //= require_tree .
 
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+
 //Lightbox with notes appears when bar in index.html.erb is clicked.
 $(document).ready(function(){
 
@@ -33,25 +39,31 @@ $(document).ready(function(){
 	  }
 	});
 
-	$(document).ready(function() {
-	  $('pre code').each(function(i, block) {
-	    hljs.highlightBlock(block);
-	  });
-	});
-
 	//Darkens bar in index.html.erb when cursor hovers
 	var $overlay = $('<div id="overlay"></div>');
-		$("#Bar_Image_Wrapper li")
-			.mouseenter(function(){
-				$(this).append($overlay.show());
-			})
-			.mouseleave(function(){
-				$overlay.hide();
-			});
+	$("#Bar_Image_Wrapper li")
+		.mouseenter(function(){
+			$(this).append($overlay.show());
+		})
+		.mouseleave(function(){
+			$overlay.hide();
+		});
+
+	// Reveals Bar Image Titles
+	$("#Bar_Image_Wrapper li")
+		.mouseenter(function(){
+			var $barNum = $(this).attr('id')
+			var $note = $('#' + $barNum + '_Title');
+			$($note).show();
+		})
+		.mouseleave(function(){
+			$("#Bar_Image_Titles li").hide()
+		});
 
 	//Lightbox with notes appears when accompanying bar with same number is clicked.
 	$("#Bar_Image_Wrapper li").click(function(){
 
+		//Get BarX and add it to BarX_Notes
 		var $barNum = $(this).attr('id')
 		var $note = $('#' + $barNum + '_Notes').show();
 		

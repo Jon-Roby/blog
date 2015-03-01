@@ -13,7 +13,19 @@
 	<li id="Bar10"><%= image_tag("bar10.jpg") %></li>
 </ul>
 
-<%# The children of this div (#BarX_Notes) are hidden until a user clicks on the corresponding #BarX listed above. Once clicked, the notes display in a light box. Continue to look%>
+<ul id="Bar_Image_Titles">
+	<li id="Bar1_Title">Logic and Proofs</li>
+	<li id="Bar2_Title">Induction and Recursion</li>	
+	<li id="Bar3_Title">Cardinality</li>
+	<li id="Bar4_Title">Probability Spaces and Conditional Probability</li>
+	<li id="Bar5_Title">Independence</li>
+	<li id="Bar6_Title">Big O Notation</li>
+	<li id="Bar7_Title">Binary Search</li>
+	<li id="Bar8_Title">Insertion Sort</li>
+	<li id="Bar9_Title">Merge Sort</li>
+	<li id="Bar10_Title">Quick Sort</li>
+</ul>
+<%# The children of this div (#BarX_Notes) are hidden until a user clicks on the corresponding #BarX listed above. Once clicked, the notes display in a light box. %>
 <div id="Bar_Notes_Wrapper">
 
 	<div id="Bar1_Notes" class="Bar_Notes">
@@ -139,11 +151,11 @@ To prove an implication you can assume that P is true and P is false. Since when
 
 With a proof by contradiction you show that if a proposition were false, then some false fact would be true. So the proposition must really be true. In order to prove a proposition P by contradiction: write “We use proof by contradiction” then write “suppose P is false”, deduce something known to be false (a logical contradiction), then write “this is a contradiction. Therefore P must be true”. 
 
-Theorem. sqrt(2) is irrational.
+Theorem. \( \sqrt2 \) is irrational.
 
-Proof. We use proof by contradiction. Suppose the claim is false; that is, sqrt2 is rational. Then we can write rt2 as a fraction n/d where n and d are positive integers. Furthermore, let’s take n and d so that n/d is in lowest terms (that is, there is no number greater than 1 that divides both n and d).
+Proof. We use proof by contradiction. Suppose the claim is false; that is, \( \sqrt2 \) is rational. Then we can write \( \sqrt2 \) as a fraction \( \frac{n}{d} \) where n and d are positive integers. Furthermore, let’s take n and d so that \( \frac{n}{d} \) is in lowest terms (that is, there is no number greater than 1 that divides both n and d).
 
-Squaring both sides gives 2 = n2 / d2 and so 2d2 = n2. This implies that n is a multiple of 2. Therefore n2 must be a multiple of 4. But since 2d2 = n2, we know 2d2 is a multiple of 4 and so d2 is a multiple of 2. This implies that d is a multiple of 2. So the numerator and denominator have 2 as a common factor, which contradicts the fact that n/d is in lowest terms. So rt2 must be irrational. QED.
+Squaring both sides gives \( 2 = \frac{n^2}{d^2} \) and so \( 2d^2 = n^2 \). This implies that n is a multiple of 2. Therefore \( \n^2 \) must be a multiple of 4. But since \( 2d^2 = n^2 \), we know \( 2d^2 \) is a multiple of 4 and so \( d^2 \) is a multiple of 2. This implies that d is a multiple of 2. So the numerator and denominator have 2 as a common factor, which contradicts the fact that \( \frac{n}{d} \) is in lowest terms. So \( \sqrt2 \) must be irrational. QED.
 
 empty set				none
 nonnegative integers		{0,1,2,3,…}
@@ -156,22 +168,21 @@ A superscript “+” restricts a set to its positive elements. For example R+ d
 
 S T indicates that S is a subset of T.
 
-The union of sets X and Y (denoted X u Y) contains all elements appearing in X or Y or both.
+The union of sets X and Y (denoted X \( \cup \) Y) contains all elements appearing in X or Y or both.
 
-The intersection of X and Y (denoted X Y) consists of all elements that appear in both X and Y. 
+The intersection of X and Y (denoted X \( \cap \) Y) consists of all elements that appear in both X and Y. 
 
 The set difference of X and Y (denoted X - Y) consists of all elements that are in X, but not in Y. 
 
-For any subset A of D, we defined notA to be the set of a
-ll elements of D not in A. That is, notA ::= D - A (set difference). The set notA is called the complement of A.
+For any subset A of D, we defined \( \neg \)A to be the set of all elements of D not in A. That is, \( \neg \)A ::= D - A (set difference). The set \( \neg \)A is called the complement of A.
 
 The cardinality of a set A is the number of elements in A and is denoted by |A|.
 
-The set of all subsets of A is called the power set of A. If A has n elements, then there are 2^n sets in P(A). In other words, if A is finite, then |P(A)| = 2^|A|. Sets provide on way to strop a collection of objects. 
+The set of all subsets of A is called the power set of A. If A has n elements, then there are \( 2^n \) sets in \( \wp(A) \). In other words, if A is finite, then \( |\wp(A)| = 2^{|A|} \). 
 
 A sequence is another way to group a collection of objects. It is a list of objects called terms or components. The elements of a set are required to be distinct but terms in a sequence can be the same. Thus, (a,b,c) is a valid sequence of length three, but {a,b,a} is a set of with two elements. Not three. The terms in a sequence have a specified order, but the elements of a set do not. For example, (a,b,c) and (a,c,b) are difference sequences, but {a,b,c} and {a,c,b} are the same set. 
 
-The product operation is one link between sets and sequences. A product of sets, S1 x S2 x … x Sn, is a new set consisting of all sequences where the first component is drawn from S1, the second from S2 and so forth. A product of n copies of a set S is denoted S^n. 
+The product operation is one link between sets and sequences. A product of sets, \( S_1 \times S_2 \times … \times S_n \), is a new set consisting of all sequences where the first component is drawn from \( S_1 \), the second from \( S_2 \) and so forth. A product of n copies of a set S is denoted \( S^n \). 
 
 An important use of predicates is in set builder notation. Example:
 
@@ -181,7 +192,40 @@ A::= {n element Natural | n is prime and n = 4k + 1 for some integer K }
 
 	<div id="Bar2_Notes" class="Bar_Notes">
 
-Notes - MIT Open Courseware: Induction (Chapter 3) 
+Notes - MIT Open Courseware: Induction (Chapter 3) and Recursion (Chapter 10)
+
+Well Ordering Principle. Every nonempty set of integers has a smallest element.
+
+Well ordering proofs. To prove that "P(n) is true for all n \( \in \mathrm{N}\)" using the Well Ordering Principle you take the following steps:
+
+1. Define the set C of counterexamples to P being true.
+2. Use a proof by contradiction and assume that C is nonempty.
+3. By the well ordering principle, there will be a smallest element n in C. 
+4. Reach a contradiction.
+5. Conclude that C must be empty. 
+
+Theorem. \( \sum_{i}^{n}i = \frac{n(n+1)}{2} \forall n \in \mathrm{N} \)
+
+Proof. By contradiction and use of the well ordering principle. Assume Theorem is false. Then collect the nonnegative integers that are the set of counterexamples: 
+
+\( C ::= \{n \in \mathrm{N} \: | \: 1 + 2 + 3 + ... + n \neq \frac{n(n+1)}{2}\}  \)
+
+Let c be the smallest counterexample to Theorem. Since c is the smallest counterexample, then the Theorem is false for all nonegative integers n < c. But it is true for n = 0, so c > 0. So c - 1 is a nonnegative integer and since it is less than c, the Theorem is true for c - 1:
+
+\( 1 + 2 + 3 + ... + (c-1) = \frac{(c-1)c}{2} \)
+
+Adding c to both sides:
+
+\( 1 + 2 + 3 + ... + (c-1) + c = \frac{(c-1)c}{2} + c \)
+
+\( = \frac{c^2 - c + 2c}{2} = \frac{c(c+1)}{2} \)
+
+This contradicts the assumption and so the theorem is proven.
+
+Ordinary Induction Rule.
+
+\( P(0). \forall n \in \mathrm{n}. P(n) \rightarrow P(n+1) \)
+\( \therefore \forall m \in \mathrm{N}. P(m) \)
 
 Tower of Hanoi Problem. Three posts and 64 disks. The only permitted action is removing the top disk from one post and dropping it onto another post. A larger disk can never lie above a smaller disk on any post.
 
@@ -631,16 +675,11 @@ Def. Events A\(_1\), A\(_2\), ... A\(_n\) are pairwise independent if
 
 All mutual are pairwise, but not all pairwise are mutual.
 
-Add discussion on Birthday Paradox
+Add notes on Birthday Paradox
 
-Add discussion on Hashing Application
-
-Fill in here.
-
-
+Add notes on Hashing Application
 
 Random Variables
-
 
 A random variable R on a probability space is a total function whose domain is the sample space. Notice that "random variable" is a misnomer; random variables are actually functions.
 
@@ -654,43 +693,52 @@ Def. An indicator (or Bernoulli or characteristic) random variable is a random v
 
 	</div>
 
-	<div id="Bar6_Notes">
+	<div id="Bar6_Notes" class="Bar_Notes">
+
+Big O Notation
+
+
+
+	</div>
+
+	<div id="Bar7_Notes" class="Bar_Notes">
 
 Binary Search (Algorithms Unlocked, p.31)
 
-Recursive-Binary-Search(A, p, r, x)
-
 Inputs and Outputs: Input A is the array and x is the value being searched for. The inputs p and r delineate the subarray A[p..r] under consideration.
 
+Recursive-Binary-Search(A, p, r, x)
+
 1. If p > r, then return Not-Found.
-2. Otherwise (p <= r), do the following:
+2. Otherwise (p \( \leq \) r), do the following:
 	A. Set q to (p + r)/2.
 	B. If A[q] = x, then return q.
-	C. Otherwise (A[q] != x), if A[q] > x, then return
+	C. Otherwise (A[q] \( \neq \) x), if A[q] > x, then return
 	   Recursive-Binary-Search(A, p, q - 1, x).
 	D. Otherwise (A[q] < x), return
 	   Recursive-Binary-Search(A, q + 1, r, x).
 
+My implementation into Ruby:
 		<pre><code class="ruby">
-def recursive_binary_search(array, key, p = 0, r = array.length - 1)
-	if p > r || key > array[array.length-1]
-		return "key not found"
-	else
-		q = (p + r)/2
-		if array[q] == key 
-			return q
-		elsif array[q] > key
-			return recursive_binary_search(array, key, p, q - 1)
-		elsif array[q] < key
-			return recursive_binary_search(array, key, q + 1, r)
-		end
-	end
+def recursive_binary_search(array, p = 0, r = array.length - 1, key)
+  if p > r || key > array[array.length-1]
+    return "key not found"
+  else
+    q = (p + r)/2
+    if array[q] == key 
+      return q
+    elsif array[q] > key
+      return recursive_binary_search(array, p, q - 1, key)
+    elsif array[q] < key
+      return recursive_binary_search(array, q + 1, r, key)
+    end
+  end
 end
-		</code></pre>
+</code></pre>
 
 	</div>
 
-	<div id="Bar7_Notes">
+	<div id="Bar8_Notes" class="Bar_Notes">
 
 Insertion Sort (Introduction to Algorithms, p. 18)		
 
@@ -704,25 +752,23 @@ Insertion_Sort(A)
 			i = i - 1
 		A[i + 1] = key
 
+My implementation into Ruby:
 		<pre><code class="ruby">
-
 def insertion_sort_ia(array)
-
-	for j in 1..array.length-1
-		key = array[j]
-		i = j - 1
-		while i >= 0 && array[i] > key
-			array[i + 1] = array[i]
-			i = i - 1
-		end
-		array[i + 1] = key
-	end
-	return array
+  for j in 1..array.length-1
+    key = array[j]
+    i = j - 1
+    while i >= 0 && array[i] > key
+      array[i + 1] = array[i]
+      i = i - 1
+    end
+    array[i + 1] = key
+  end
+  return array
 end
 		</code></pre>
-
+My implementation into idiomatic Ruby:
 		<pre><code class="ruby">
-
 def insertion_sort(array)  
   array.each_with_index do |key,j|  
     i = j - 1  
@@ -734,145 +780,164 @@ def insertion_sort(array)
   end 
   return array 
 end 
-
 		</code></pre>
-
 	</div>
 
-	<div id="Bar8_Notes">
+	<div id="Bar9_Notes" class="Bar_Notes">
 
-Merge Sort (Introduction to Algorithms, p. 31)	
+Notes - Merge Sort (Introduction to Algorithms, p. 31)	
 
 Merge(A, p, q, r)
-	n1 = q - p + 1
-	n2 = r - q 
-	let L[1..n1 + 1] and R[1..n2 + 1] be new arrays
-	for i = 1 to n2
-		L[i] = A[p + i - 1]
-	for j = 1 to n2
-		R[j] = A[q + j]
-	L[n1 + 1] = infinity
-	R[n2 + 1] = infinity
-	i = 1
-	j = 1
-	for k = p to r
-		if L[i] <= R[j]
-			A[k] = L[i]
-			i = i + 1
-		else A[k] = R[j]
-			j = j + 1
+  n1 = q - p + 1
+  n2 = r - q 
+  let L[1..n1 + 1] and R[1..n2 + 1] be new arrays
+  for i = 1 to n2
+    L[i] = A[p + i - 1]
+  for j = 1 to n2
+    R[j] = A[q + j]
+  L[n1 + 1] = infinity // The sentinel.
+  R[n2 + 1] = infinity // The sentinel.
+  i = 1
+  j = 1
+  for k = p to r
+    if L[i] <= R[j]
+      A[k] = L[i]
+      i = i + 1
+    else A[k] = R[j]
+      j = j + 1
 
+Merge_Sort(A, p, r) // p is the first index and r is the last index of the array.
+  if p < r
+      q = floor(p + r)/2
+      Merge_Sort(A, p, q)
+      Merge_Sort(A, q + 1, r)
+      Merge(A, p, q, r)
+
+My direct implementation into Ruby (the method won't yield correct results if the array includes a value that is aquintillion or greater).
 <pre><code class="ruby">
-
 def merge(array, p, q, r)
-	n1 = q - p + 1 #compute the length n1 of the subarray array[p..q]
-	n2 = r - q #compute the length n2 of the subarray  array[q + 1..r]
-	left = [], right = []
-	for i in 0..n2
-		left[i] = array[p + i - 1]
-	end
-	for j in 0..n2
-		right[j] = array[q + j]
-	end
-	left[n1 + 1] = 1000 #sentinel
-	right[n2 + 1] = 1000 #sentinel
-	i = 0
-	j = 0
-	for k in p..r
-		puts "hello"
-		if left[i] <= right[j]
-			i = i + 1
-		elsif array[k] == right[j]
-			j = j + 1
-		end
-	end
+  n1 = q - p + 1 #compute the length n1 of the subarray array[p..q]
+  n2 = r - q #compute the length n2 of the subarray array[q + 1..r]
+  left = [], right = []
+  for i in 0..n2
+    left[i] = array[p + i]
+  end
+  for j in 0..n2
+    right[j] = array[q + j + 1]
+  end
+  left[n1] = 999999999999999 # The sentinel. Note to avoid a one-off error I didn't add 1 to n1.
+  right[n2] = 999999999999999 # The sentinel. Note to avoid a one-off error I didn't add 1 to n1.
+  i = 0
+  j = 0
+  for k in p..r
+    if left[i] <= right[j]
+      array[k] = left[i]
+      i = i + 1
+    else 
+      array[k] = right[j]
+      j = j + 1
+    end
+  end
 end
-
-</code></pre>
-
-Introduction to Algorithms, p. 34
-Merge_Sort(A, p, r)
-	if p < r
-			q = floor(p + r)/2
-			Merge_Sort(A, p, q)
-			Merge_Sort(A, q + 1, r)
-			Merge(A, p, q, r)
-
-=end
 
 def merge_sort(array, p, r)
-	if p < r 
-		q = (p + r)/2
-		merge_sort(array, p, q)
-		merge_sort(array, q + 1, r)
-		merge(array, p, q, r)
-	end
+  if p < r 
+    q = (p + r)/2
+    merge_sort(array, p, q)
+    merge_sort(array, q + 1, r)
+    merge(array, p, q, r)
+  end
 end
-
-
-puts merge_sort([30, 10, 50, 20, 40], 0, 5)
-
-
-=begin
-
-def merge(left, right)  
-  sorted = []  
-  until left.empty? or right.empty?  
-    if left.first <= right.first  
-      sorted << left.shift  
-    else  
-      sorted << right.shift  
-    end  
-  end  
-  sorted.concat(left).concat(right)  
-end
-
-def mergesort(list)  
-  return list if list.size <= 1  
-  mid = list.size / 2  
-  left  = list[0, mid]  
-  right = list[mid, list.size]  
-  merge(mergesort(left), mergesort(right))  
-end  
-  
-=end
-
-	</div>
-
-	<div id="Bar9_Notes">
-
-Quick Sort (Introduction to Algorithms, p. 171)	
-
-Quicksort(A, p, r)
-	if p < r
-		q = Partition(A, p, r)
-		Quicksort(A, p, q - 1)
-		Quicksort(A, q + 1, r)
-
-Partition(A, p, r)
-	x = A[r]
-	i = p - 1
-	for j = p to r -1
-		if A[j] <= x
-			i = i + 1
-			exchange A[i] with A[j]
-	exchange A[i + 1] with A[r]
-	return i + 1
-
-<pre><code class="ruby">
-
-def quicksort(list)  
-  return list if list.size <= 1  
-  pivot = list.sample  
-  left, right = list.partition { |e| e < pivot }  
-  quicksort(left) + quicksort(right)  
-end 
 
 </code></pre>
 
+My implementation into idiomatic Ruby (again, the method won't yield correct results if the array includes a value that is a quintillion or greater).
+<pre><code class="ruby">
+def merge(array, p, q, r)
+  n1 = q - p + 1 #compute the length n1 of the subarray array[p..q]
+  n2 = r - q #compute the length n2 of the subarray array[q + 1..r]
+  left = [], right = []
+  (0..n2).each do |i|
+    left[i] = array[p + i]
+  end
+  (0..n2).each do |j|
+    right[j] = array[q + j + 1]
+  end
+  left[n1] = 999999999999999 # The sentinel. To avoid a one-off error I didn't add 1 to n1.
+  right[n2] = 999999999999999 # The sentinel. To avoid a one-off error I didn't add 1 to n1.
+  i = 0
+  j = 0
+  (p..r).each do |k|
+    if left[i] <= right[j]
+      array[k] = left[i]
+      i = i + 1
+    else 
+      array[k] = right[j]
+      j = j + 1
+    end
+  end
+end
+
+def merge_sort(array, p, r)
+  if p < r 
+    q = (p + r)/2
+    merge_sort(array, p, q)
+    merge_sort(array, q + 1, r)
+    merge(array, p, q, r)
+  end
+end
+</code></pre>
 	</div>
 
-	<div id="Bar10_Notes">
+	<div id="Bar10_Notes" class="Bar_Notes">
+
+Notes - Quick Sort (Introduction to Algorithms, p. 171)	
+
+Quicksort(A, p, r)
+  if p < r
+    q = Partition(A, p, r)
+    Quicksort(A, p, q - 1)
+    Quicksort(A, q + 1, r)
+
+Partition(A, p, r)
+  x = A[r]
+  i = p - 1
+  for j = p to r -1
+    if A[j] <= x
+      i = i + 1
+      exchange A[i] with A[j]
+  exchange A[i + 1] with A[r]
+  return i + 1
+
+<pre><code class="ruby">
+
+def quicksort(array, p, r)
+  if p < r 
+    q = partition(array, p, r)
+    quicksort(array, p, q-1)
+    quicksort(array, q+1, r)
+  end
+end
+
+def partition(array, p, r)
+  x = array[r]
+  i = p - 1
+  (p..r-1).each do |j|
+    if array[j] <= x
+      i = i + 1
+      swap = array[i]
+      array[i] = array[j]
+      array[j] = swap
+    end
+  end
+  swap = array[i + 1]
+  array[i + 1] = array[r]
+  array[r] = swap
+  return i + 1
+end
+
+</code></pre>
+
 	</div>
 
 </div>
