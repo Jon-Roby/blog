@@ -1,0 +1,347 @@
+<pre><code class="ruby">
+
+def reverse(string)
+    reversed_string = ''
+    string.each_char do |i|
+        reversed_string = i + reversed_string
+    end
+    return reversed_string
+end
+
+def factorial(num)
+    if num < 0
+        return nil
+    end
+    
+    if num == 1
+        return 0
+    else
+        return num * factorial(num)
+    end
+end
+
+def factorial(num)
+    if num < 0
+        return nil
+    end
+    
+    result = 1
+    result.upto(num) do |i|
+        result *= num
+    end
+    return result
+end
+
+
+def longest_word(sentence)
+    longest = ''
+    sentence.split.each do |i|
+        if longest < i
+            longest = i
+        end
+    end
+    return longest
+end
+
+
+def sum_nums(num)
+    result = 0
+    1.upto(num) do |i|
+        result += i
+    end
+    return result
+end
+
+def sum_nums(num)
+    if num == 0
+        return 0
+    else
+        return num + sum_nums(num-1)
+    end
+end
+
+
+def time_conversion(minutes)
+    
+    hours = minutes / 60
+    minutes = minutes % 60
+    
+    if minutes < 10
+        minutes_s = '0' << minutes.to_s
+    else
+        minutes_s = minutes.to_s
+    end
+    
+    return hours.to_s << ':' << minutes_s
+end
+
+
+def count_vowels(string)
+    num_vowels = 0
+    string.each_char do |i|
+        if i =~ /[aeiouAEIOU]/
+            num_vowels += 1
+        end
+    end
+    return num_vowels
+end
+
+def palindrome?(string)
+    return string == reverse(string)
+end
+
+
+# most letters challenge
+def nearby_az(string)
+
+  string.each_char.with_index do |char, idx1|
+    if char != "a"
+      next
+    end
+
+    idx2 = idx1 + 1
+
+    until (idx2 == string.length) || (idx2 > idx1 + 3)
+      if string[idx2] == "z"
+        return true
+      end
+      idx2 += 1
+    end
+  end
+
+  return false
+end
+
+def two_sum(nums)
+
+  nums.each_with_index do |num, idx1|
+    idx2 = idx1 + 1
+    until idx2 == nums.length
+      if num + nums[idx2] == 0
+        return [idx1, idx2]
+      end
+      idx2 += 1
+    end
+  end
+  return nil
+end
+
+def power_of_2?(number)
+ return false if number == 0
+ while(number % 2 == 0)
+   number = number / 2
+ end
+ return false if number > 1
+ true
+end
+
+def power_of_2?(number)
+ return true if number == 1
+ return false if number == 0 || number % 2 != 0
+ power_of_2?(number / 2)
+end
+
+def third_greatest(nums)
+  first = nil
+  second = nil
+  third = nil
+
+  nums.each do |i|
+    if first == nil || i > first
+      third = second
+      second = first
+      first = i
+    elsif second == nil || i > second
+      third = second
+      second = value
+    elsif third == nil || i > third
+      third = value
+    end
+  end
+  return third
+end
+
+
+def most_common_letter(string)
+  most_common_letter = 0
+  most_common_letter_count = 0
+
+  idx1 = 0
+  until idx1 == string.length
+    letter = string[idx1]
+    count = 0
+
+    idx2 = 0
+    until idx2 == string.length
+      if string[idx2] == letter
+        count += 1
+      end
+      idx2 += 1
+    end
+
+    if count > most_common_letter_count
+      most_common_letter = letter
+      most_common_letter_count = count
+    end
+
+    idx1 += 1
+  end
+
+  return [most_common_letter, most_common_letter_count]
+end
+
+def most_common_letter2(string)
+  most_common_letter = '' 
+  most_common_letter_count = 0
+
+  string.each_char do |i|
+    if most_common_letter_count < string.scan(i).count
+      most_common_letter_count = string.scan(i).count
+      most_common_letter = i
+    end
+  end
+
+  return [most_common_letter, most_common_letter_count]
+end
+
+def dasherize_number(num)
+  num_s = num.to_s
+  result = ''
+  num_s.each_char.with_index do |char, idx|
+    if idx > 0
+      prev_digit = num_s[idx-1].to_i
+      if (prev_digit % 2 == 1) || (char.to_i % 2 == 1)
+        result += "-"
+      end
+    end
+    result += num_s[idx]
+  end
+  puts result
+  return result
+end
+
+def capitalize_words(string)
+  words = string.split(" ")
+  words.each do |word|
+    word[0] = word[0].upcase
+  end
+  return words.join(' ')
+end
+
+
+def scramble_string(string, position)
+  result = ''
+  position.each do |idx|
+    result += string[idx]
+  end
+  return result
+end
+
+
+def is_prime?(num)
+  if num < 2
+    return false
+  end
+
+  (2...num).each do |i|
+    if num % i == 0
+      return false
+    end
+  end
+
+  return true
+end
+
+
+def nth_prime(n)
+  prime_num = 0
+  2.upto(n) do |idx|
+    if i.is_prime?
+      prime_num += 1
+    end
+    if prime_num == n
+      return idx
+    end
+  end
+end
+
+
+def longest_palindrome(string)
+  longest_palindrome = ''
+
+  idx1 = 0
+  until idx1 == string.length
+    length = 1
+    until (idx1 + length) > string.length
+      substring = string.slice(idx1, length)
+
+      if palindrome?(substring) && (substring.length > longest_palindrome.length)
+        longest_palindrome = substring
+      end
+
+      length += 1
+    end
+
+    idx1 += 1
+  end
+
+  return longest_palindrome
+end
+
+def greatest_common_factor(num1, num2)
+
+  if num2 == 0
+    return num1
+  end
+
+  swap = nil
+  if num2 > num1
+    swap = num1
+    num1 = num2
+    num2 = swap
+  end
+
+  greatest_common_factor(num2, num1%num2)
+
+end
+
+
+def num_repeats(string)
+  counts = []
+
+  str_idx = 0
+  while str_idx < string.length
+    letter = string[str_idx]
+
+    counts_idx = 0
+    while counts_idx < counts.length
+      if counts[counts_idx][0] == letter
+        counts[counts_idx][1] += 1
+        break
+      end
+      counts_idx += 1
+    end
+
+    if counts_idx == counts.length
+      # didn't find this letter in the counts array; count it for the
+      # first time
+      counts.push([letter, 1])
+    end
+
+    str_idx += 1
+  end
+
+  num_repeats = 0
+  counts_idx = 0
+  while counts_idx < counts.length
+    if counts[counts_idx][1] > 1
+      num_repeats += 1
+    end
+
+    counts_idx += 1
+  end
+
+  return num_repeats
+end
+
+</code></pre>

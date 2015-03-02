@@ -19,7 +19,7 @@
 	<li id="Bar3_Title">Cardinality</li>
 	<li id="Bar4_Title">Probability Spaces and Conditional Probability</li>
 	<li id="Bar5_Title">Independence</li>
-	<li id="Bar6_Title">Big O Notation</li>
+	<li id="Bar6_Title">Asymptotic Notation</li>
 	<li id="Bar7_Title">Binary Search</li>
 	<li id="Bar8_Title">Insertion Sort</li>
 	<li id="Bar9_Title">Merge Sort</li>
@@ -29,7 +29,6 @@
 <div id="Bar_Notes_Wrapper">
 
 	<div id="Bar1_Notes" class="Bar_Notes">
-
 Notes - MIT Open Courseware: Propositions (Chapter 1) and Patterns of Proof (Chapter 2)
 
 Def. A proposition is a statement that is either true or false. 2 + 3 = 5 
@@ -155,7 +154,7 @@ Theorem. \( \sqrt2 \) is irrational.
 
 Proof. We use proof by contradiction. Suppose the claim is false; that is, \( \sqrt2 \) is rational. Then we can write \( \sqrt2 \) as a fraction \( \frac{n}{d} \) where n and d are positive integers. Furthermore, let’s take n and d so that \( \frac{n}{d} \) is in lowest terms (that is, there is no number greater than 1 that divides both n and d).
 
-Squaring both sides gives \( 2 = \frac{n^2}{d^2} \) and so \( 2d^2 = n^2 \). This implies that n is a multiple of 2. Therefore \( \n^2 \) must be a multiple of 4. But since \( 2d^2 = n^2 \), we know \( 2d^2 \) is a multiple of 4 and so \( d^2 \) is a multiple of 2. This implies that d is a multiple of 2. So the numerator and denominator have 2 as a common factor, which contradicts the fact that \( \frac{n}{d} \) is in lowest terms. So \( \sqrt2 \) must be irrational. QED.
+Squaring both sides gives \( 2 = \frac{n^2}{d^2} \) and so \( 2d^2 = n^2 \). This implies that n is a multiple of 2. Therefore \( n^2 \) must be a multiple of 4. But since \( 2d^2 = n^2 \), we know \( 2d^2 \) is a multiple of 4 and so \( d^2 \) is a multiple of 2. This implies that d is a multiple of 2. So the numerator and denominator have 2 as a common factor, which contradicts the fact that \( \frac{n}{d} \) is in lowest terms. So \( \sqrt2 \) must be irrational. QED.
 
 empty set				none
 nonnegative integers		{0,1,2,3,…}
@@ -191,7 +190,6 @@ A::= {n element Natural | n is prime and n = 4k + 1 for some integer K }
 	</div>
 
 	<div id="Bar2_Notes" class="Bar_Notes">
-
 Notes - MIT Open Courseware: Induction (Chapter 3) and Recursion (Chapter 10)
 
 Well Ordering Principle. Every nonempty set of integers has a smallest element.
@@ -270,9 +268,9 @@ The pattern that seems to be emerging is
 	</div>
 
 	<div id="Bar3_Notes" class="Bar_Notes">
-
 Notes - MIT Open Courseware: Cardinality Rules (Chapter 11) 
 		<%# Indenting here, will mean it indents in the final format. %>
+
 Def. A set is an unordered collection of distinct elements. 
 
 Ex. {a,b,c} = {b,c,a}. However, {a,b,a} is not a set, though it is a collection (or multiset).
@@ -472,7 +470,6 @@ $$ (a + b)^n = \sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^{k} $$
 	</div>
 
 	<div id="Bar4_Notes" class="Bar_Notes">
-
 Notes - MIT Open Courseware: Events and Probability Spaces (Chapter 14) and Conditional Probability (Chapter 15)
 
 Def. The sample space for an experiment is the set of all possible outcomes.
@@ -604,7 +601,6 @@ B = event person tests positive
 	</div>
 
 	<div id="Bar5_Notes" class="Bar_Notes">
-
 Notes - MIT Open Courseware: Independence (Chapter 16) 
 
 Def. An event A is independent of an event B if Pr(A|B)=Pr(A) or if Pr(B) = 0.
@@ -695,9 +691,7 @@ Def. An indicator (or Bernoulli or characteristic) random variable is a random v
 
 	<div id="Bar6_Notes" class="Bar_Notes">
 
-Big O Notation
-
-
+Asymptotic Notation (Algorithms Unlocked, p. 18)
 
 	</div>
 
@@ -735,6 +729,11 @@ def recursive_binary_search(array, p = 0, r = array.length - 1, key)
   end
 end
 </code></pre>
+
+Properties (Algorithms Unlocked, p. 57)
+Worst-case running time: \( \Theta(\mathrm{lg} \: n)\)
+Best-case running time: \( \Theta(1)\)
+Requires sorted array: Yes
 
 	</div>
 
@@ -781,6 +780,11 @@ def insertion_sort(array)
   return array 
 end 
 		</code></pre>
+
+Properties (Algorithms Unlocked, p. 57) 
+Worst-case running time: \( \Theta(n^2)\)
+Best-case running time: \( \Theta(n)\)
+
 	</div>
 
 	<div id="Bar9_Notes" class="Bar_Notes">
@@ -813,7 +817,7 @@ Merge_Sort(A, p, r) // p is the first index and r is the last index of the array
       Merge_Sort(A, q + 1, r)
       Merge(A, p, q, r)
 
-My direct implementation into Ruby (the method won't yield correct results if the array includes a value that is aquintillion or greater).
+My direct implementation into Ruby (the method won't yield correct results if the array includes a value that is a quintillion or greater).
 <pre><code class="ruby">
 def merge(array, p, q, r)
   n1 = q - p + 1 #compute the length n1 of the subarray array[p..q]
@@ -887,6 +891,11 @@ def merge_sort(array, p, r)
   end
 end
 </code></pre>
+
+Properties (Algorithms Unlocked, p. 57) 
+Worst-case running time: \( \Theta(n \: \mathrm{lg} \: n)\)
+Best-case running time: \( \Theta(n \: \mathrm{lg} \: n)\)
+
 	</div>
 
 	<div id="Bar10_Notes" class="Bar_Notes">
@@ -939,22 +948,78 @@ end
 
 </code></pre>
 
+Properties (Algorithms Unlocked, p. 57) 
+Worst-case running time: \( \Theta(n^2)\)
+Best-case running time: \( \Theta(n \: \mathrm{lg} \: n)\)
+
 	</div>
 
 </div>
 
-
-
 <div id="About_Questions">
-
 	<div class="Gotham">
-		What do you wonder about?
+Why would anyone want to read your notes?
 	</div>
-
 	<div class="Archer">
-		Viral literally pour-over readymade chambray. McSweeney's tousled drinking vinegar, messenger bag asymmetrical food truck ugh you probably haven't heard of them fap cronut wayfarers bitters. IPhone Vice swag paleo, skateboard direct trade roof party salvia whatever hoodie literally. Street art Banksy narwhal High Life, tattooed chillwave ugh pop-up cornhole fashion axe McSweeney's crucifix fixie asymmetrical iPhone. Literally art party actually, listicle food truck squid skateboard small batch beard jean shorts. Narwhal cold-pressed Carles four loko, chillwave Neutra bitters iPhone PBR biodiesel. High Life stumptown farm-to-table, vegan taxidermy skateboard scenester Vice try-hard tilde post-ironic tote bag deep v health goth yr.
+I typed my notes to get acquainted with LaTeX. Eventually, I want to use this site to post helpful information for other aspiring developers.
 	</div>
-
+<div class="Gotham">
+Is that photo in the Louvre? It sure is striking.
+	</div>
+	<div class="Archer">
+I actually took it! And then spent a ridiculous amount of time editing it in Adobe Photoshop. I'm very pleased you would ask since everyone else assumed it's a stock photo from Google. 
+	</div>
+	<div class="Gotham">
+Why is there so much space around the displayed mathematics in the notes?
+	</div>
+	<div class="Archer">
+I'm not sure. But it's pissing me off. Lesson: use inline delimiters.
+	</div>
+	<div class="Gotham">
+What is the elegant typeface you used for the notes?
+	</div>
+	<div class="Archer">
+Latin-Modern. It is derived from Computer-Modern, which was developed by Donald Knuth. You can get it <a href="http://www.gust.org.pl/projects/e-foundry/latin-modern">here</a>. I read that some people conduct research just to write papers with it. 
+	</div>
+<div class="Gotham">
+What is your favorite letter in Latin-Modern?
+	</div>
+	<div class="Archer">
+The capital 'R'. By the way, these answers are written in <a href="http://www.typography.com/fonts/archer/overview/">Archer</a>. You probably recognize it from the posters for "Grand Budapest Hotel".
+	</div>
+<div class="Gotham">
+What are your favorite books?
+	</div>
+	<div class="Archer">
+Thinking Fast and Slow, Daniel Kahneman
+Flash Boys: A Wall Street Revolt, Michael Lewis
+Closed Chambers: The Rise, Fall, and Future of the Modern Supreme Court, Edward Lazarus (a former law clerk of Justice Blackmun)
+An Enquiry Concerning Human Understanding, David Hume
+	</div>
+	<div class="Gotham">
+What is the most surprising thing you've learned while studying web development?
+	</div>
+	<div class="Archer">
+That some sets of infinity are greater than others! Sadly, the person that discovered this died in a sanitarium.
+	</div>
+	<div class="Gotham">
+What are you working on now?
+	</div>
+	<div class="Archer">
+I am <a href="https://lit-tor-8434.herokuapp.com/">redesigning</a> my site, <a href="https://infinite-brushlands-1585.herokuapp.com/">DERAILED</a>. I am creating a logo and the concept is that the letters in the title will represent derailing rail cars, with the rightmost 'D' being the powercar. <a href="https://www.myfonts.com/fonts/canadatype/miedinger/">Miedinger</a> should be perfect, since its horizontally stretched letters are already evocative of a high speed train. Unfortunately, I can't get it to work. 
+	</div>
+	<div class="Gotham">
+What do you see yourself doing in the future, aside from developing websites?
+	</div>
+	<div class="Archer">
+Wingsuit diving.
+	</div>
+	<div class="Gotham">
+Anything else you'd like to add?
+	</div>
+	<div class="Archer">
+Polanski shouldn't have cut Gittes' response to Curly on page four of the <a href="http://www.public.asu.edu/~srbeatty/394/Chinatown.pdf">Chinatown screenplay</a>: "...you gotta be rich to kill somebody, anybody and get away with it. You think you got that kind of dough, you think you got that kind of class?" You read it. That line is there. And it is perfect. Towne, the screenwriter, foreshadows the ending in the very beginning. But you won't see that line in the movie, because it's not there. Roman f*ing Polanski cut it. I should probably forget it, but it's "Chinatown", the greatest of all films noirs.
+	</div>
 </div>
 
 

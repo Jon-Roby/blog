@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   get '/bar1', to: 'posts#bar1'
   get '/bar2', to: 'posts#bar2'
+  get '/solutions', to: 'pages#solutions'
 end
