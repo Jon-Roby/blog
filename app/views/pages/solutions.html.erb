@@ -1,70 +1,43 @@
 <pre><code class="ruby">
 
 def reverse(string)
-    reversed_string = ''
-    string.each_char do |i|
-        reversed_string = i + reversed_string
+    reversed = ''
+    string.each_char do |char|
+        reversed = char + reversed
     end
-    return reversed_string
+    return reversed
 end
 
 def factorial(num)
-    if num < 0
-        return nil
-    end
-    
-    if num == 1
-        return 0
-    else
-        return num * factorial(num)
-    end
+  return nil if num < 0
+  if num == 0
+    return 1
+  else 
+    return num * factorial(n - 1)
+  end
 end
-
-def factorial(num)
-    if num < 0
-        return nil
-    end
-    
-    result = 1
-    result.upto(num) do |i|
-        result *= num
-    end
-    return result
-end
-
 
 def longest_word(sentence)
-    longest = ''
-    sentence.split.each do |i|
-        if longest < i
-            longest = i
-        end
+  longest = ''
+  sentence.split.each do |word|
+    if longest.length < word.length
+      longest = word
     end
-    return longest
+  end
+  return longest
 end
-
 
 def sum_nums(num)
     result = 0
-    1.upto(num) do |i|
+    (0..num).each do |i|
         result += i
     end
     return result
 end
 
-def sum_nums(num)
-    if num == 0
-        return 0
-    else
-        return num + sum_nums(num-1)
-    end
-end
-
-
 def time_conversion(minutes)
-    
-    hours = minutes / 60
-    minutes = minutes % 60
+    hours = minutes/60
+    minutes = minutes%60
     
     if minutes < 10
         minutes_s = '0' << minutes.to_s
@@ -75,41 +48,101 @@ def time_conversion(minutes)
     return hours.to_s << ':' << minutes_s
 end
 
-
 def count_vowels(string)
     num_vowels = 0
-    string.each_char do |i|
-        if i =~ /[aeiouAEIOU]/
-            num_vowels += 1
-        end
+    string.each_char do |char|
+      num_vowels += 1 if char =~ /[aeiouAEIOU]/
     end
     return num_vowels
 end
 
-def palindrome?(string)
-    return string == reverse(string)
+def nearby_az(string)
+    string.each_char.with_index do |char, idx1|
+        next if string[idx1] != 'a'
+        idx2 = idx1 + 1
+        until (idx2 > idx1 + 3) || (idx2 == string.length)
+            return true if string[idx2] == 'z'
+            idx2 += 1
+        end
+    end
+    return false
 end
 
-
-# most letters challenge
-def nearby_az(string)
-
-  string.each_char.with_index do |char, idx1|
-    if char != "a"
-      next
-    end
-
-    idx2 = idx1 + 1
-
-    until (idx2 == string.length) || (idx2 > idx1 + 3)
-      if string[idx2] == "z"
-        return true
-      end
-      idx2 += 1
-    end
+def palindrome?(string)
+  string.each_char.with_index do |char, idx|
+    return false if char != string[string.length - 1 - idx]
   end
+  return true
+end
 
-  return false
+def two_sum(nums)
+    nums.each_with_index do |num, idx1|
+        idx2 = idx1 + 1
+        until idx2 == nums.length
+            if num + nums[idx2] == 0
+                return [idx1, idx2]
+            end
+            idx2 += 1
+        end
+    end
+    return nil
+end
+
+def power_of_two?(number)
+    return true if number == 1
+    return false if number == 0 || number % 2 != 0
+    return power_of_two?(number / 2)
+end
+
+def third_greatest(nums)
+    first = nil
+    second = nil
+    third = nil
+    
+    nums.each do |i|
+        if first == nil || first < i
+            third = second
+            second = first
+            first = i
+        elsif second == nil || second < i
+            third = second
+            second = i
+        elsif third == nil || third < i
+            third = i
+        end
+    end
+    return third
+end
+
+def most_common_letter(string)
+    common = ''
+    count = 0
+    string.each_char.with_index do |char, idx|
+        temp_count = 0
+        until idx == string.length
+            if string[idx] == char
+                temp_count += 1
+            end
+            idx += 1
+        end
+        if count < temp_count
+            count = temp_count
+            common = char
+        end
+    end
+    return [common, count]
+end
+
+def most_common_letter(string)
+    most_common_letter = ''
+    most_common_letter_count = 0
+    string.each_char do |char|
+        if most_common_letter_count < string.scan(char).count
+            most_common_letter_count = string.scan(char).count
+            most_common_letter = char
+        end
+    end
+    return [most_common_letter, most_common_letter_count]
 end
 
 def two_sum(nums)
@@ -307,41 +340,13 @@ end
 
 
 def num_repeats(string)
-  counts = []
-
-  str_idx = 0
-  while str_idx < string.length
-    letter = string[str_idx]
-
-    counts_idx = 0
-    while counts_idx < counts.length
-      if counts[counts_idx][0] == letter
-        counts[counts_idx][1] += 1
-        break
-      end
-      counts_idx += 1
+  num_repeats = []
+  string.each_char do |char|
+    if string.scan(char).count > 1 && num_repeats.include?(char) == false
+      num_repeats << char
     end
-
-    if counts_idx == counts.length
-      # didn't find this letter in the counts array; count it for the
-      # first time
-      counts.push([letter, 1])
-    end
-
-    str_idx += 1
   end
-
-  num_repeats = 0
-  counts_idx = 0
-  while counts_idx < counts.length
-    if counts[counts_idx][1] > 1
-      num_repeats += 1
-    end
-
-    counts_idx += 1
-  end
-
-  return num_repeats
+  return num_repeats.length
 end
 
 </code></pre>
