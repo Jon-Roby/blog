@@ -42,14 +42,14 @@
 	display: flex;
  	flex-direction: row;
  	justify-content: space-between;
- 	
+
  	min-width: 900px;
  	max-width: 900px;
 
  	position: relative;
  	margin-left: auto;
  	margin-right: auto;
- 	
+
  	align-content: space-around;
 
  	padding-top: 20px;
@@ -63,8 +63,8 @@
 
 	#Notes {
 		align-self: center;
-		font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-		font-weight: 700; 
+		font-family: 'Gotham SSm A', 'Gotham SSm B';
+		font-weight: 700;
 		font-style: normal;
 		color: #333333;
 		&:hover {
@@ -76,10 +76,10 @@
 
 	#Jon {
 		align-self: center;
-		padding-top: 8px;
+		padding-top: 24px;
 		padding-left: 250px;
 		padding-bottom: 15px;
-		
+
 		font-family: 'SlimJoe';
 		font-size: 2.2em;
 		color: #545454;
@@ -88,8 +88,8 @@
 
 	#Roby {
 		padding-right: 250px;
-		font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-		font-weight: 700; 
+		font-family: 'Gotham SSm A', 'Gotham SSm B';
+		font-weight: 700;
 		font-style: normal;
 		font-size: 2.5em;
 		color: #333333;
@@ -98,14 +98,14 @@
 
 	#About {
 		align-self: center;
-		font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-		font-weight: 200; 
+		font-family: 'Gotham SSm A', 'Gotham SSm B';
+		font-weight: 200;
 		font-style: normal;
 		text-decoration: none;
 		color: #545454;
 		&:hover {
-			font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-			font-weight: 700; 
+			font-family: 'Gotham SSm A', 'Gotham SSm B';
+			font-weight: 700;
 			font-style: normal;
 			transition-duration: .2s;
 		}
@@ -122,29 +122,29 @@
 		margin-right: auto;
 		min-width: 750px;
 		max-width: 750px;
-		
+
 		padding-right: 30px;
 		padding-top: 110px;
-		
+
 	}
 }
 
 /* BARS */
 
 #Bar_Image_Wrapper {
-	
+
 	min-width: 750px;
 	max-width: 750px;
 
 	position: relative;
  	margin-left: auto;
  	margin-right: auto;
- 	
+
  	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: flex-end;
-	
+
 	padding-top: 110px;
 	padding-right: 50px;
 
@@ -165,11 +165,11 @@
 }
 
 #Bar_Image_Titles {
-	
+
 	li {
 	display: none;
-	font-family: 'Archer SSm A', 'Archer SSm B'; 
-	font-weight: 400; 
+	font-family: 'Archer SSm A', 'Archer SSm B';
+	font-weight: 400;
 	font-style: normal;
 	font-size: 1em;
 	text-decoration: none;
@@ -182,7 +182,7 @@
 	}
 }
 
-//This hides all of the barnotes until user clicks on a bar. 
+//This hides all of the barnotes until user clicks on a bar.
 #Bar_Notes_Wrapper div {
 	display: none;
 	max-width: 100px;
@@ -207,12 +207,12 @@
 	left: 0;
 	display: none;
 
-	
+
 	div {
-		font-family:  "Latin-Modern2"; 
-		
+		font-family:  "Latin-Modern2";
+
 		white-space: pre-wrap;
-		
+
 		background: white;
 		color: #333333;
 
@@ -222,7 +222,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 150px;
-		
+
 		overflow-x: auto;
 
 	}
@@ -239,8 +239,8 @@
 }
 
 .Archer {
-	font-family: 'Archer SSm A', 'Archer SSm B'; 
-	font-weight: 400; 
+	font-family: 'Archer SSm A', 'Archer SSm B';
+	font-weight: 400;
 	font-style: normal;
 	white-space: pre-wrap;
 	a {
@@ -251,13 +251,13 @@
 }
 
 .Gotham {
-	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-	font-weight: 500; 
+	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-weight: 500;
 	font-style: normal;
 	white-space: pre-wrap;
 
 
-	
+
 	color: #333333;
 }
 
@@ -266,11 +266,3 @@ pre .ruby {
 	text-indent: 10px;
 	padding: none;
 }
-
-
-
-
-
-
-
-
